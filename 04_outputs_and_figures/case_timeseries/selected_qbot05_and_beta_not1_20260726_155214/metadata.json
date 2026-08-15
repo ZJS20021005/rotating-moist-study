@@ -1,0 +1,60 @@
+[
+  {
+    "key": "Ra8e6_Ek3e-3_AR16_Beta1p02_qbot0p5",
+    "title": "$Ra=8\\times10^6,\\ Ek=3\\times10^{-3},\\ \\Gamma=16,\\ \\beta=1.02,\\ q_{\\rm bot}=0.5$",
+    "short": "$Ek=3\\times10^{-3},\\ q_{\\rm bot}=0.5$",
+    "remote_run": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run",
+    "plot_lengths": true,
+    "files": {
+      "avgvar": {
+        "remote": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/data/avgvar.out",
+        "local": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\case_timeseries\\selected_qbot05_and_beta_not1_20260726_155214\\remote_raw_out_files\\Ra8e6_Ek3e-3_AR16_Beta1p02_qbot0p5\\avgvar.out",
+        "available": false
+      },
+      "mse_aggregation": {
+        "remote": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/data/mse_aggregation.out",
+        "local": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\case_timeseries\\selected_qbot05_and_beta_not1_20260726_155214\\remote_raw_out_files\\Ra8e6_Ek3e-3_AR16_Beta1p02_qbot0p5\\mse_aggregation.out",
+        "available": false
+      },
+      "mse_aggregation_scales": {
+        "remote": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/data/mse_aggregation_scales.out",
+        "local": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\case_timeseries\\selected_qbot05_and_beta_not1_20260726_155214\\remote_raw_out_files\\Ra8e6_Ek3e-3_AR16_Beta1p02_qbot0p5\\mse_aggregation_scales.out",
+        "available": false
+      },
+      "w_z075_spectral_length": {
+        "remote": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/data/w_z075_spectral_length.out",
+        "local": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\case_timeseries\\selected_qbot05_and_beta_not1_20260726_155214\\remote_raw_out_files\\Ra8e6_Ek3e-3_AR16_Beta1p02_qbot0p5\\w_z075_spectral_length.out",
+        "available": false
+      }
+    }
+  },
+  {
+    "key": "Ra8e6_AR10_norotating_Beta1p02_botsat",
+    "title": "$Ra=8\\times10^6,\\ {\\rm nonrotating},\\ \\Gamma=10,\\ \\beta=1.02$",
+    "short": "${\\rm nonrotating},\\ \\Gamma=10$",
+    "remote_run": "/share/org/SHUTUANL/shu_zhangjs/rainy model/ns/transition_study/beta_not1/Ra8e6/AR10/norotating/Beta1p02/run",
+    "plot_lengths": false,
+    "files": {
+      "avgvar": {
+        "remote": "/share/org/SHUTUANL/shu_zhangjs/rainy model/ns/transition_study/beta_not1/Ra8e6/AR10/norotating/Beta1p02/run/data/avgvar.out",
+        "local": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\case_timeseries\\selected_qbot05_and_beta_not1_20260726_155214\\remote_raw_out_files\\Ra8e6_AR10_norotating_Beta1p02_botsat\\avgvar.out",
+        "available": false
+      },
+      "mse_aggregation": {
+        "remote": "/share/org/SHUTUANL/shu_zhangjs/rainy model/ns/transition_study/beta_not1/Ra8e6/AR10/norotating/Beta1p02/run/data/mse_aggregation.out",
+        "local": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\case_timeseries\\selected_qbot05_and_beta_not1_20260726_155214\\remote_raw_out_files\\Ra8e6_AR10_norotating_Beta1p02_botsat\\mse_aggregation.out",
+        "available": false
+      },
+      "mse_aggregation_scales": {
+        "remote": "/share/org/SHUTUANL/shu_zhangjs/rainy model/ns/transition_study/beta_not1/Ra8e6/AR10/norotating/Beta1p02/run/data/mse_aggregation_scales.out",
+        "local": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\case_timeseries\\selected_qbot05_and_beta_not1_20260726_155214\\remote_raw_out_files\\Ra8e6_AR10_norotating_Beta1p02_botsat\\mse_aggregation_scales.out",
+        "available": false
+      },
+      "w_z075_spectral_length": {
+        "remote": "/share/org/SHUTUANL/shu_zhangjs/rainy model/ns/transition_study/beta_not1/Ra8e6/AR10/norotating/Beta1p02/run/data/w_z075_spectral_length.out",
+        "local": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\case_timeseries\\selected_qbot05_and_beta_not1_20260726_155214\\remote_raw_out_files\\Ra8e6_AR10_norotating_Beta1p02_botsat\\w_z075_spectral_length.out",
+        "available": false
+      }
+    }
+  }
+]

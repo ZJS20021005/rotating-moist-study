@@ -1,0 +1,2 @@
+﻿time_start,time_end,n_points,kinetic_energy_mean,kinetic_energy_std,coefficient_of_variation,linear_slope,relative_change_from_linear_fit
+1200.0,1640.0,4401,0.0019791611739468306,0.00015084379964018648,0.07621602607501377,-1.9369641712457617e-07,-0.04306189139960518

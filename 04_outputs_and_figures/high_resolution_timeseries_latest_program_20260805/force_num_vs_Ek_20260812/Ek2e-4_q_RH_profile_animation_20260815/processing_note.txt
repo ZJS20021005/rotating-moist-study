@@ -1,0 +1,4 @@
+Horizontal means are computed snapshot-first.
+q = RH * exp(alpha_qs * (b - beta_qs*z)), alpha_qs=3, beta_qs=1.02.
+Burst windows are inherited from the low-flat 2*pi*Lm plateau diagnostic.
+Skipped frames: ['field00125.h5: Unable to synchronously open file (file signature not found)']

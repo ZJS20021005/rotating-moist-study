@@ -1,0 +1,47 @@
+{
+  "case": {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.0002,
+    "AR": 4.0,
+    "beta": 1.02,
+    "qbot": 0.5,
+    "qtop": 0.004978,
+    "resolution": [
+      257,
+      257,
+      65
+    ]
+  },
+  "definitions": {
+    "kinetic_energy": "K=0.5*avgvar one-based column 4",
+    "lc_w": "sum(E_w)/sum(k_h*E_w), excluding k_h=0",
+    "plotted_convective_wavelength": "2*pi*lc_w"
+  },
+  "available_time": {
+    "avgvar_start": 0.1,
+    "avgvar_end": 600.0,
+    "convective_scale_start": 0.1,
+    "convective_scale_end": 600.0
+  },
+  "linear_instability_fit": {
+    "slope": 0.25525776039226633,
+    "intercept": -27.201016221066414,
+    "r_squared": 0.9999743322762598,
+    "max_abs_log_residual": 0.05950690199022546,
+    "t_start": 5.9,
+    "t_end": 50.2,
+    "duration": 44.300000000000004,
+    "n_points": 444,
+    "search_peak_time": 84.6,
+    "amplitude_growth_rate": 0.12762888019613317,
+    "energy_e_folding_time": 3.9176086104620444,
+    "amplitude_e_folding_time": 7.835217220924089
+  },
+  "linear_interval_convective_wavelength": {
+    "z05_mean": 0.31437565212777724,
+    "z05_std": 0.005742488085756452,
+    "z_weighted_mean": 0.3210790230225931,
+    "z_weighted_std": 0.00897738210406736
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "case": "Ek3e-2",
+  "anchor": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65",
+  "parameters": {
+    "Nx_bou": 385,
+    "Ny_bou": 385,
+    "Nz_bou": 65,
+    "Lz": 1.0,
+    "Lx": 16.0,
+    "Ly": 16.0,
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.03000000000000819,
+    "gamma": 1.1,
+    "Sm": 1.0,
+    "alphaqs": 3.0,
+    "betaqs": 1.02,
+    "tau_cond": 0.001
+  },
+  "movie_shape_zyx": [
+    64,
+    384,
+    384
+  ],
+  "frames": [
+    {
+      "time": 1530.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/field00153.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/horizontal_velocity00153.h5"
+    },
+    {
+      "time": 1540.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/field00154.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/horizontal_velocity00154.h5"
+    },
+    {
+      "time": 1550.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/field00155.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/horizontal_velocity00155.h5"
+    },
+    {
+      "time": 1560.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/field00156.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/horizontal_velocity00156.h5"
+    },
+    {
+      "time": 1570.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/field00157.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/horizontal_velocity00157.h5"
+    },
+    {
+      "time": 1580.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/field00158.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/horizontal_velocity00158.h5"
+    },
+    {
+      "time": 1590.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/field00159.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/horizontal_velocity00159.h5"
+    },
+    {
+      "time": 1600.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/field00160.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/movie/horizontal_velocity00160.h5"
+    },
+    {
+      "time": 1610.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti2/conti1/run/movie/field00161.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti2/conti1/run/movie/horizontal_velocity00161.h5"
+    },
+    {
+      "time": 1620.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti2/conti1/run/movie/field00162.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti2/conti1/run/movie/horizontal_velocity00162.h5"
+    }
+  ],
+  "mprime_reconstruction_max_abs_error_first_frame": 1.0436096431476471e-14,
+  "filter": "G_ell(k_h)=exp(-ell^2*k_h^2/2), k_c=1/ell",
+  "flux": "Pi_m=-<tau_i(u_i,mprime)*partial_i(mprime_ell)>_V",
+  "flux_sign": "Pi_m>0 forward/downscale; Pi_m<0 inverse/upscale",
+  "averaging": "compute every frame first, then average latest frames",
+  "transfer_sum_per_frame": [
+    2.81336187123051e-06,
+    3.5123404150722002e-06,
+    3.889212949212706e-06,
+    3.4957545287741443e-06,
+    3.10743824293703e-06,
+    3.915709475518756e-06,
+    3.739331144500293e-06,
+    3.309341325663745e-06,
+    3.7088656359873454e-06,
+    3.832625169014922e-06
+  ],
+  "npz": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/postprocess/mse_variance_gaussian_flux_20260802/final_latest10/Ek3e-2/mse_variance_spectrum_budget_gaussian_flux.npz"
+}

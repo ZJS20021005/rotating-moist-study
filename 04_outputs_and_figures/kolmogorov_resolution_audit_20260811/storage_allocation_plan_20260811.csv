@@ -1,0 +1,5 @@
+priority,case_set,source_path,target_path,current_or_expected_size_GiB,action,status,reason
+1,Ek1e-1,G:\moist convection\Ek1e-1,H:\rotating_case\Pr0p7\Ra8e6\Ek1e-1,127.465848,"moved complete case; verified 3021 files and representative HDF5 datasets","completed","G source absent; confirmed duplicate copies removed; case remains unsplit on H"
+2,"remaining 13 target cases",G:\moist convection,G:\moist convection,230.053,"keep every case wholly on G; finish the filtered target queue into the existing case roots","in_progress","G has 246.61 GiB free; Ek1e-3 and Ek1p5e-4 still have 74.690359 GiB queued; no case will be split"
+3,"FileZilla queued target data",FileZilla,G:\moist convection,74.690359,"download only target Ek1e-3 qbot0p5 and Ek1p5e-4 qbot0p5 data","waiting_for_password","queue audited after graceful FileZilla close: kept 2697 target items; removed 659 non-target pending items totaling 27.894303 GiB; FileZilla is at password prompt"
+4,"reserve only",F:\,F:\,109.78,"do not place partial cases here","empty","reserve capacity; no target case is split across drives"

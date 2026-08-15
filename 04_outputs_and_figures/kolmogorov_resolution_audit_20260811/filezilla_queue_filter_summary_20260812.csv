@@ -1,0 +1,4 @@
+status,scope,items,size_GiB,action
+kept_target_queue,"Ek1e-3 qbot0p5 and Ek1p5e-4 qbot0p5",2697,74.690359,"loaded in FileZilla; waiting for server password"
+removed_non_target_queue,"Ek1e-3 qbot1; Ek1e-4 qbot0p5/qbot1; Ek1p5e-3 qbot1",659,27.894303,"removed from pending queue only; existing local files were not deleted"
+backup,"original 3356-item queue database",3356,102.584662,"filezilla_queue_before_target_filter_20260811.sqlite3"

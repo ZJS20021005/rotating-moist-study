@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jiasen Scientific Plot Style"
+  short_description: "Apply the fixed thick-frame scientific figure style used by the moist-convection project"
+  default_prompt: "Use this skill to draw or restyle scientific figures with the approved frame thickness, fonts, axis-box ratio, saturated case colors, inward ticks, and stable legend layout."

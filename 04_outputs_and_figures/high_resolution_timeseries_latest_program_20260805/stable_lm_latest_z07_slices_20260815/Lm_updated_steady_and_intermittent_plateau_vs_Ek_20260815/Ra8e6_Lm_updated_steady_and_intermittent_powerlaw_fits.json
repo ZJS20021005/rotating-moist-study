@@ -1,0 +1,20 @@
+{
+  "combined": {
+    "power": 0.6056577093687707,
+    "prefactor": 61.020150387496614,
+    "R2_log_space": 0.9928506975278472,
+    "point_count": 8
+  },
+  "intermittent_plateau": {
+    "power": 0.5952167693098946,
+    "prefactor": 56.15374975145201,
+    "R2_log_space": 0.9979624909058806,
+    "point_count": 3
+  },
+  "late_time_steady": {
+    "power": 0.6047041342889605,
+    "prefactor": 60.76312439845279,
+    "R2_log_space": 0.9704814992013451,
+    "point_count": 5
+  }
+}

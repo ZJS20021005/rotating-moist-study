@@ -1,0 +1,197 @@
+{
+  "definitions": {
+    "kinetic_energy": "K = 0.5 * avgvar one-based column 4",
+    "convective_scale_file_columns": [
+      "time",
+      "lc_w_z_approximately_0.5",
+      "z_weighted_lc_w"
+    ],
+    "lc_w_raw": "sum(E_w) / sum(k_h E_w), excluding k_h=0",
+    "plotted_convective_wavelength": "2*pi*lc_w",
+    "moist_integral_scale_file_columns": [
+      "time",
+      "Lm",
+      "Lq",
+      "Lvorticity"
+    ],
+    "Lm_raw": "sum(E_m) / sum(k_h E_m), excluding k_h=0",
+    "plotted_moist_integral_wavelength": "2*pi*Lm",
+    "mprime_square_file_columns": [
+      "time",
+      "mean_xy(mprime^2)_z025",
+      "mean_xy(mprime^2)_z050",
+      "mean_xy(mprime^2)_z075",
+      "stretched_grid_weighted_vertical_mean_xy(mprime^2)"
+    ],
+    "plotted_mprime_variance": "stretched-grid-weighted vertical mean of the per-height horizontal variance of mprime, with mprime=m-mean_xy(m) and m=b+gamma*q",
+    "stitch_rule": "Sort by physical time; at duplicate times retain the later continuation segment. No time offset is applied."
+  },
+  "cases": {
+    "Ek7e-3_AR16": {
+      "avgvar": {
+        "segments": [
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek7e-3_AR16\\run_avgvar.out",
+            "rows": 1000,
+            "time_start": 0.1,
+            "time_end": 100.0
+          },
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek7e-3_AR16\\conti1_run_avgvar.out",
+            "rows": 1127,
+            "time_start": 100.1,
+            "time_end": 212.7
+          }
+        ],
+        "stitched_rows": 2127,
+        "time_start": 0.1,
+        "time_end": 212.7,
+        "duplicate_times_removed": 0
+      },
+      "convective": {
+        "segments": [
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek7e-3_AR16\\run_convective_scale.dat",
+            "rows": 1000,
+            "time_start": 0.1,
+            "time_end": 100.0
+          },
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek7e-3_AR16\\conti1_run_convective_scale.dat",
+            "rows": 1128,
+            "time_start": 100.1,
+            "time_end": 212.8
+          }
+        ],
+        "stitched_rows": 2128,
+        "time_start": 0.1,
+        "time_end": 212.8,
+        "duplicate_times_removed": 0
+      },
+      "moist": {
+        "segments": [
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek7e-3_AR16\\run_moist_integral_scale.dat",
+            "rows": 1000,
+            "time_start": 0.1,
+            "time_end": 100.0
+          },
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek7e-3_AR16\\conti1_run_moist_integral_scale.dat",
+            "rows": 1128,
+            "time_start": 100.1,
+            "time_end": 212.8
+          }
+        ],
+        "stitched_rows": 2128,
+        "time_start": 0.1,
+        "time_end": 212.8,
+        "duplicate_times_removed": 0
+      },
+      "mprime": {
+        "segments": [
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek7e-3_AR16\\run_mprime_square.dat",
+            "rows": 1000,
+            "time_start": 0.1,
+            "time_end": 100.0
+          },
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek7e-3_AR16\\conti1_run_mprime_square.dat",
+            "rows": 1196,
+            "time_start": 100.1,
+            "time_end": 219.6
+          }
+        ],
+        "stitched_rows": 2196,
+        "time_start": 0.1,
+        "time_end": 219.6,
+        "duplicate_times_removed": 0
+      },
+      "has_continuation": true
+    },
+    "Ek1p5e-4_AR4": {
+      "avgvar": {
+        "segments": [
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek1p5e-4_AR4\\run_avgvar.out",
+            "rows": 6000,
+            "time_start": 0.1,
+            "time_end": 600.0
+          },
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek1p5e-4_AR4\\conti1_run_avgvar.out",
+            "rows": 2468,
+            "time_start": 600.1,
+            "time_end": 846.8
+          }
+        ],
+        "stitched_rows": 8468,
+        "time_start": 0.1,
+        "time_end": 846.8,
+        "duplicate_times_removed": 0
+      },
+      "convective": {
+        "segments": [
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek1p5e-4_AR4\\run_convective_scale.dat",
+            "rows": 6000,
+            "time_start": 0.1,
+            "time_end": 600.0
+          },
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek1p5e-4_AR4\\conti1_run_convective_scale.dat",
+            "rows": 2469,
+            "time_start": 600.1,
+            "time_end": 846.9
+          }
+        ],
+        "stitched_rows": 8469,
+        "time_start": 0.1,
+        "time_end": 846.9,
+        "duplicate_times_removed": 0
+      },
+      "moist": {
+        "segments": [
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek1p5e-4_AR4\\run_moist_integral_scale.dat",
+            "rows": 6000,
+            "time_start": 0.1,
+            "time_end": 600.0
+          },
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek1p5e-4_AR4\\conti1_run_moist_integral_scale.dat",
+            "rows": 2470,
+            "time_start": 600.1,
+            "time_end": 847.0
+          }
+        ],
+        "stitched_rows": 8470,
+        "time_start": 0.1,
+        "time_end": 847.0,
+        "duplicate_times_removed": 0
+      },
+      "mprime": {
+        "segments": [
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek1p5e-4_AR4\\run_mprime_square.dat",
+            "rows": 6000,
+            "time_start": 0.1,
+            "time_end": 600.0
+          },
+          {
+            "file": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\Ra8e6_three_cases_continuation_timeseries_20260729\\raw_segments\\Ek1p5e-4_AR4\\conti1_run_mprime_square.dat",
+            "rows": 2621,
+            "time_start": 600.1,
+            "time_end": 862.1
+          }
+        ],
+        "stitched_rows": 8621,
+        "time_start": 0.1,
+        "time_end": 862.1,
+        "duplicate_times_removed": 0
+      },
+      "has_continuation": true
+    }
+  }
+}

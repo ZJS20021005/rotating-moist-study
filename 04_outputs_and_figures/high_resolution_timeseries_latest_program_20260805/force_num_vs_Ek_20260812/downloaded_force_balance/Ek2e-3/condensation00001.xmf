@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+<Xdmf Version="2.0"><Domain>
+<Grid Name="RB Cartesian" GridType="Uniform">
+<Topology TopologyType="3DRectMesh" NumberOfElements="64 384 384"/>
+<Geometry GeometryType="VXVYVZ">
+<DataItem Dimensions="384" NumberType="Float" Precision="8" Format="HDF">
+cordin_info.h5:/x</DataItem>
+<DataItem Dimensions="384" NumberType="Float" Precision="8" Format="HDF">
+cordin_info.h5:/y</DataItem>
+<DataItem Dimensions="64" NumberType="Float" Precision="8" Format="HDF">
+cordin_info.h5:/z</DataItem>
+</Geometry>
+<Attribute Name="COND_me" AttributeType="Scalar" Center="Node">
+<DataItem Dimensions="64 384 384" NumberType="Float" Precision="8" Format="HDF">
+condensation00001.h5:/COND_me</DataItem>
+</Attribute>
+<Time Value="    1.0000000000E+01" />
+</Grid></Domain></Xdmf>

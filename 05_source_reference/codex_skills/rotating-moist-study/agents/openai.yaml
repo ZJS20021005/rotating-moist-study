@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rotating Moist Study"
+  short_description: "Analyze rotating moist convection with the project's definitions, methods, results, paths, and figure conventions"
+  default_prompt: "Use this skill to analyze the rotating Rainy-Benard project, preserve diagnostic definitions and averaging order, update reduced results from remote data, and produce figures with the linked scientific plot-style skill."

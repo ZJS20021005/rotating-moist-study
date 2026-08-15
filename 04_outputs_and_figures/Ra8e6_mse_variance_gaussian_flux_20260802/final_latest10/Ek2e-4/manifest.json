@@ -1,0 +1,95 @@
+{
+  "case": "Ek2e-4",
+  "anchor": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65",
+  "parameters": {
+    "Nx_bou": 257,
+    "Ny_bou": 257,
+    "Nz_bou": 65,
+    "Lz": 1.0,
+    "Lx": 4.0,
+    "Ly": 4.0,
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.00020000000000066313,
+    "gamma": 1.1,
+    "Sm": 1.0,
+    "alphaqs": 3.0,
+    "betaqs": 1.02,
+    "tau_cond": 0.001
+  },
+  "movie_shape_zyx": [
+    64,
+    256,
+    256
+  ],
+  "frames": [
+    {
+      "time": 510.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/field00051.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/horizontal_velocity00051.h5"
+    },
+    {
+      "time": 520.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/field00052.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/horizontal_velocity00052.h5"
+    },
+    {
+      "time": 530.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/field00053.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/horizontal_velocity00053.h5"
+    },
+    {
+      "time": 540.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/field00054.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/horizontal_velocity00054.h5"
+    },
+    {
+      "time": 550.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/field00055.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/horizontal_velocity00055.h5"
+    },
+    {
+      "time": 560.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/field00056.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/horizontal_velocity00056.h5"
+    },
+    {
+      "time": 570.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/field00057.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/horizontal_velocity00057.h5"
+    },
+    {
+      "time": 580.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/field00058.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/horizontal_velocity00058.h5"
+    },
+    {
+      "time": 590.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/field00059.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/horizontal_velocity00059.h5"
+    },
+    {
+      "time": 600.0,
+      "field": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/field00060.h5",
+      "horizontal_velocity": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run/movie/horizontal_velocity00060.h5"
+    }
+  ],
+  "mprime_reconstruction_max_abs_error_first_frame": 8.104628079763643e-15,
+  "filter": "G_ell(k_h)=exp(-ell^2*k_h^2/2), k_c=1/ell",
+  "flux": "Pi_m=-<tau_i(u_i,mprime)*partial_i(mprime_ell)>_V",
+  "flux_sign": "Pi_m>0 forward/downscale; Pi_m<0 inverse/upscale",
+  "averaging": "compute every frame first, then average latest frames",
+  "transfer_sum_per_frame": [
+    -2.010470708031635e-14,
+    -1.612789454848846e-14,
+    -1.3678247503050373e-14,
+    -1.3478470477391918e-14,
+    -1.632131153665003e-14,
+    -1.098825889624846e-14,
+    -1.5809004078924575e-15,
+    2.3903366331141e-14,
+    1.87910708841769e-13,
+    2.4058660553937437e-12
+  ],
+  "npz": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/postprocess/mse_variance_gaussian_flux_20260802/final_latest10/Ek2e-4/mse_variance_spectrum_budget_gaussian_flux.npz"
+}

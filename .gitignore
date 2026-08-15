@@ -1,0 +1,36 @@
+# Generated Python and build artefacts
+**/__pycache__/
+*.pyc
+*.pyo
+*.o
+*.mod
+*.tmp
+
+# Raw or restart data: keep the location and provenance in manifests, not in Git
+**/*.h5
+**/*.hdf5
+**/*.tar
+**/*.tar.zst
+**/*.zst
+**/*.zip
+**/remote_raw_out_files/
+**/raw/
+
+# Large time-series exports and videos can be regenerated from raw output
+**/high_resolution_timeseries_long.csv
+**/all_current_*_timeseries.csv
+**/*.mp4
+**/*.gif
+
+# Local/editor/OS files
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+
+# Local credentials must never enter the repository
+*.rsa
+*.pem
+id_rsa*
+known_hosts*
+

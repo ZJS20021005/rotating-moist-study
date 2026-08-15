@@ -1,0 +1,16 @@
+| case | Ek | AR | grid_effective | eta_K_min | kmax_dealias_eta_K_min | max_dz_over_eta_K_wall01 | N_E_bottom | spectral_screening | combined_resolution_status | zhang2017_velocity_spacing_pass |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Ek1e-1 | 0.1 | 16 | 384x384x64 | 0.015701 | 0.78924 | 0.73364 | 22 | marginal | marginal | False |
+| Ek1e-2 | 0.01 | 16 | 384x384x64 | 0.014541 | 0.7309 | 0.82219 | 9 | marginal | marginal | False |
+| Ek1e-3 | 0.001 | 16 | 384x384x64 | 0.0099585 | 0.50057 | 1.0015 | 3 | under-resolved | under-resolved | False |
+| Ek1p5e-4 | 0.00015 | 4 | 256x256x64 | 0.081509 | 10.926 | 0.16611 | 1 | resolved | under-resolved | True |
+| Ek2e-3 | 0.002 | 16 | 384x384x64 | 0.010039 | 0.50463 | 0.99341 | 4 | under-resolved | under-resolved | False |
+| Ek2e-4 | 0.0002 | 4 | 256x256x64 | 0.19615 | 26.292 | 0.050844 | 1 | resolved | under-resolved | True |
+| Ek3e-2 | 0.03 | 16 | 384x384x64 | 0.014574 | 0.73255 | 0.80782 | 14 | marginal | marginal | False |
+| Ek3e-3 | 0.003 | 16 | 384x384x64 | 0.010252 | 0.51534 | 0.97275 | 5 | under-resolved | under-resolved | False |
+| Ek5e-2 | 0.05 | 16 | 384x384x64 | 0.014249 | 0.71621 | 0.81059 | 17 | marginal | marginal | False |
+| Ek5e-3 | 0.005 | 16 | 384x384x64 | 0.011284 | 0.5672 | 0.88382 | 6 | under-resolved | under-resolved | False |
+| Ek5e-4 | 0.0005 | 16 | 384x384x64 | 0.010481 | 0.52681 | 0.98326 | 2 | under-resolved | under-resolved | False |
+| Ek7e-3 | 0.007 | 16 | 384x384x64 | 0.012877 | 0.64729 | 0.82733 | 7 | under-resolved | under-resolved | False |
+| Ek7e-4 | 0.0007 | 16 | 384x384x64 | 0.03992 | 2.0066 | 0.2568 | 3 | resolved | under-resolved | False |
+| norotating | nan | 16 | 384x384x64 | 0.016792 | 0.84404 | 0.70445 | 0 | marginal | not_confirmed_nonrotating_BL | False |

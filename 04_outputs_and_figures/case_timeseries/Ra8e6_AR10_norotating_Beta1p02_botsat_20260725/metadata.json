@@ -1,0 +1,10 @@
+{
+  "remote_run_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/ns/transition_study/beta_not1/Ra8e6/AR10/norotating/Beta1p02/botsat/run",
+  "definition_K": "K=0.5*avgvar one-based column 4 = 0.5*<u^2+v^2+w^2>_V",
+  "definition_mprime": "A_m=<Var_xy(m)>_z, plotted mprime amplitude=sqrt(A_m), from data/mse_aggregation.out",
+  "n_kinetic": 19414,
+  "n_mprime": 19414,
+  "max_T_kinetic": 1941.4,
+  "max_T_mprime": 1941.4,
+  "updated_at": "2026-07-25T23:31:52"
+}

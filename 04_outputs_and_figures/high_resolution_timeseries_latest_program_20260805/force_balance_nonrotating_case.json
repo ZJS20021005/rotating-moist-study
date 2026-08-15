@@ -1,0 +1,16 @@
+[
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": null,
+    "AR": 16.0,
+    "invRo": 0.0,
+    "control_alpha": 0.0,
+    "Ek_label": "nonrotating",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/norotating/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/norotating/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/norotating/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti1/run"
+    ]
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-08-02T01:27:07",
+  "remote_host": "c01n0006",
+  "remote_root": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case",
+  "target_Ek": [
+    0.00015,
+    0.0002,
+    0.003,
+    0.005,
+    0.007,
+    0.01,
+    0.03
+  ],
+  "latest_program_only": true,
+  "definitions": {
+    "kinetic": "K=0.5*avgvar one-based column 4",
+    "mprime_variance": "<<[m-<m>xy]^2>xy>z with stretched-grid vertical weighting",
+    "l0": "avgvar one-based columns 8 and 9 at z approximately 0.5 and 0.75",
+    "mse_peak": "L_peak,m=2*pi/k_peak,m",
+    "mse_spectral": "2*pi*sum(E_m)/sum(k_h E_m)",
+    "convective_mid": "2*pi*sum(E_w)/sum(k_h E_w) at z approximately 0.5",
+    "convective_zavg": "vertical weighted mean of per-height convective scale, multiplied by 2*pi"
+  },
+  "archive_gap_fill": {
+    "source": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\high_resolution_timeseries_latest_program_20260801\\high_resolution_timeseries_long.csv",
+    "cases": [
+      0.007000000000004278
+    ],
+    "rule": "used only when the current remote merged series contains a physical-time gap; current remote rows override archived duplicate times"
+  },
+  "selected_cases": 7,
+  "case_time_max": {
+    "0.00015": 1200.0,
+    "0.0002": 600.0,
+    "0.003": 1600.0,
+    "0.005": 1600.0,
+    "0.007": 1600.0,
+    "0.01": 1590.0,
+    "0.03": 1600.0
+  },
+  "figures": [
+    "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\Ra8e6_kinetic_mprime_timeseries.png",
+    "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\Ra8e6_kinetic_mprime_timeseries.pdf",
+    "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\Ra8e6_horizontal_velocity_l0_timeseries.png",
+    "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\Ra8e6_horizontal_velocity_l0_timeseries.pdf",
+    "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\Ra8e6_mse_length_scales_timeseries.png",
+    "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\Ra8e6_mse_length_scales_timeseries.pdf",
+    "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\Ra8e6_velocity_length_scales_timeseries.png",
+    "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\Ra8e6_velocity_length_scales_timeseries.pdf"
+  ]
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.00014999999999973672,
+    "AR": 4.0,
+    "invRo": 1.9720265943699997,
+    "control_alpha": 0.0,
+    "Ek_label": "0.00015",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1p5e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1p5e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1p5e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti1/run"
+    ]
+  },
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.00020000000000066313,
+    "AR": 4.0,
+    "invRo": 1.47901994577,
+    "control_alpha": 0.0,
+    "Ek_label": "0.0002",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-4/AR4/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti1/run"
+    ]
+  },
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.0004999999999999675,
+    "AR": 16.0,
+    "invRo": 0.59160797831,
+    "control_alpha": 0.0,
+    "Ek_label": "0.0005",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek5e-4/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek5e-4/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run"
+    ]
+  },
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.0007000000000004278,
+    "AR": 16.0,
+    "invRo": 0.422577127364,
+    "control_alpha": 0.0,
+    "Ek_label": "0.0007",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek7e-4/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek7e-4/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-08-02T01:44:51",
+  "remote_host": "c01n0006",
+  "target_Ek": [
+    0.00015,
+    0.0002,
+    0.003,
+    0.005,
+    0.007,
+    0.01,
+    0.03
+  ],
+  "definition": {
+    "mprime_2D": "stretched-grid weighted vertical mean of m-<m>xy(z)",
+    "positive_mask": "mprime_2D > 0",
+    "core_mask": "mprime_2D > sigma(mprime_2D)",
+    "equivalent_radius": "R_i=sqrt(A_i/pi)",
+    "plotted_quantity": "Rmax=max_i R_i after the optional bou.in criterion R_i>2*vortex_lc"
+  },
+  "important_scope": "This is the largest MSE-anomaly connected-structure radius from mse_vortex_diagnostics, not a vertical-vorticity or Q-criterion dynamical vortex radius.",
+  "known_gap": "Ek=7e-3 has no maximum_radius.dat history for 100<t<1000; the line is intentionally broken and no interpolation is used.",
+  "csv": "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\maximum_mse_vortex_radius_timeseries.csv",
+  "figures": [
+    "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\Ra8e6_maximum_mse_vortex_radius_timeseries_full.png",
+    "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\Ra8e6_maximum_mse_vortex_radius_timeseries_full.pdf",
+    "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\Ra8e6_maximum_mse_vortex_radius_timeseries_tge100.png",
+    "E:\\moist RB\\rotating_case_inventory\\04_outputs_and_figures\\target7_latest_program_timeseries_20260802\\Ra8e6_maximum_mse_vortex_radius_timeseries_tge100.pdf"
+  ]
+}

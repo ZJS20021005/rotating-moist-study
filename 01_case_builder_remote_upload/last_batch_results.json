@@ -1,0 +1,93 @@
+[
+  {
+    "status": "dry_run",
+    "case_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/norotating/AR10/Beta1p20/qbot1_qtop0p004978/N129x129x65",
+    "run_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/norotating/AR10/Beta1p20/qbot1_qtop0p004978/N129x129x65/run",
+    "job_name": "Ra1e8Pr0p7NRB1p20N129",
+    "computed_invRo": 0.0,
+    "dsaltop": 0.19999999999999996,
+    "dsalbot": 0.0,
+    "qvaptop": 0.004978,
+    "qvapbot": 1.0,
+    "boundary_rule": "dsaltop=beta-1, dsalbot=0",
+    "submit_command": "cd '/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/norotating/AR10/Beta1p20/qbot1_qtop0p004978/N129x129x65/run' && csub < subjob.sh"
+  },
+  {
+    "status": "dry_run",
+    "case_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek1e-3/AR10/Beta1p10/qbot1_qtop0p004978/N129x129x65",
+    "run_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek1e-3/AR10/Beta1p10/qbot1_qtop0p004978/N129x129x65/run",
+    "job_name": "Ra1e8Pr0p7Ek1e-3B1p10N129",
+    "computed_invRo": 0.08366600265340755,
+    "dsaltop": 0.10000000000000009,
+    "dsalbot": 0.0,
+    "qvaptop": 0.004978,
+    "qvapbot": 1.0,
+    "boundary_rule": "dsaltop=beta-1, dsalbot=0",
+    "submit_command": "cd '/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek1e-3/AR10/Beta1p10/qbot1_qtop0p004978/N129x129x65/run' && csub < subjob.sh"
+  },
+  {
+    "status": "dry_run",
+    "case_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek1e-3/AR10/Beta1p20/qbot1_qtop0p004978/N129x129x65",
+    "run_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek1e-3/AR10/Beta1p20/qbot1_qtop0p004978/N129x129x65/run",
+    "job_name": "Ra1e8Pr0p7Ek1e-3B1p20N129",
+    "computed_invRo": 0.08366600265340755,
+    "dsaltop": 0.19999999999999996,
+    "dsalbot": 0.0,
+    "qvaptop": 0.004978,
+    "qvapbot": 1.0,
+    "boundary_rule": "dsaltop=beta-1, dsalbot=0",
+    "submit_command": "cd '/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek1e-3/AR10/Beta1p20/qbot1_qtop0p004978/N129x129x65/run' && csub < subjob.sh"
+  },
+  {
+    "status": "dry_run",
+    "case_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek9e-4/AR10/Beta1p10/qbot1_qtop0p004978/N129x129x65",
+    "run_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek9e-4/AR10/Beta1p10/qbot1_qtop0p004978/N129x129x65/run",
+    "job_name": "Ra1e8Pr0p7Ek9e-4B1p10N129",
+    "computed_invRo": 0.09296222517045284,
+    "dsaltop": 0.10000000000000009,
+    "dsalbot": 0.0,
+    "qvaptop": 0.004978,
+    "qvapbot": 1.0,
+    "boundary_rule": "dsaltop=beta-1, dsalbot=0",
+    "submit_command": "cd '/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek9e-4/AR10/Beta1p10/qbot1_qtop0p004978/N129x129x65/run' && csub < subjob.sh"
+  },
+  {
+    "status": "dry_run",
+    "case_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek9e-4/AR10/Beta1p20/qbot1_qtop0p004978/N129x129x65",
+    "run_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek9e-4/AR10/Beta1p20/qbot1_qtop0p004978/N129x129x65/run",
+    "job_name": "Ra1e8Pr0p7Ek9e-4B1p20N129",
+    "computed_invRo": 0.09296222517045284,
+    "dsaltop": 0.19999999999999996,
+    "dsalbot": 0.0,
+    "qvaptop": 0.004978,
+    "qvapbot": 1.0,
+    "boundary_rule": "dsaltop=beta-1, dsalbot=0",
+    "submit_command": "cd '/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek9e-4/AR10/Beta1p20/qbot1_qtop0p004978/N129x129x65/run' && csub < subjob.sh"
+  },
+  {
+    "status": "dry_run",
+    "case_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek7e-4/AR10/Beta1p10/qbot1_qtop0p004978/N129x129x65",
+    "run_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek7e-4/AR10/Beta1p10/qbot1_qtop0p004978/N129x129x65/run",
+    "job_name": "Ra1e8Pr0p7Ek7e-4B1p10N129",
+    "computed_invRo": 0.11952286093343938,
+    "dsaltop": 0.10000000000000009,
+    "dsalbot": 0.0,
+    "qvaptop": 0.004978,
+    "qvapbot": 1.0,
+    "boundary_rule": "dsaltop=beta-1, dsalbot=0",
+    "submit_command": "cd '/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek7e-4/AR10/Beta1p10/qbot1_qtop0p004978/N129x129x65/run' && csub < subjob.sh"
+  },
+  {
+    "status": "dry_run",
+    "case_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek7e-4/AR10/Beta1p20/qbot1_qtop0p004978/N129x129x65",
+    "run_dir": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek7e-4/AR10/Beta1p20/qbot1_qtop0p004978/N129x129x65/run",
+    "job_name": "Ra1e8Pr0p7Ek7e-4B1p20N129",
+    "computed_invRo": 0.11952286093343938,
+    "dsaltop": 0.19999999999999996,
+    "dsalbot": 0.0,
+    "qvaptop": 0.004978,
+    "qvapbot": 1.0,
+    "boundary_rule": "dsaltop=beta-1, dsalbot=0",
+    "submit_command": "cd '/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra1e8/Ek7e-4/AR10/Beta1p20/qbot1_qtop0p004978/N129x129x65/run' && csub < subjob.sh"
+  }
+]

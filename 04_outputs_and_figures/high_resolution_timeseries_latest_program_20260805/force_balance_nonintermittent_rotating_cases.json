@@ -1,0 +1,134 @@
+[
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.000999999999999935,
+    "AR": 16.0,
+    "invRo": 0.295803989155,
+    "control_alpha": 0.0,
+    "Ek_label": "0.001",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti1/run"
+    ]
+  },
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.002000000000006631,
+    "AR": 16.0,
+    "invRo": 0.147901994577,
+    "control_alpha": 0.0,
+    "Ek_label": "0.002",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek2e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/run"
+    ]
+  },
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.003000000000000819,
+    "AR": 16.0,
+    "invRo": 0.0986013297183,
+    "control_alpha": 0.0,
+    "Ek_label": "0.003",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti1/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti2/conti1/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti3/run"
+    ]
+  },
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.004999999999999675,
+    "AR": 16.0,
+    "invRo": 0.059160797831,
+    "control_alpha": 0.0,
+    "Ek_label": "0.005",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek5e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek5e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek5e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti1/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek5e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti2/conti1/run"
+    ]
+  },
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.007000000000004278,
+    "AR": 16.0,
+    "invRo": 0.0422577127364,
+    "control_alpha": 0.0,
+    "Ek_label": "0.007",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek7e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek7e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek7e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti1/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek7e-3/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti2/conti1/run"
+    ]
+  },
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.00999999999999935,
+    "AR": 16.0,
+    "invRo": 0.0295803989155,
+    "control_alpha": 0.0,
+    "Ek_label": "0.01",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti1/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N257x257x65/conti2/conti1/run"
+    ]
+  },
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.03000000000000819,
+    "AR": 16.0,
+    "invRo": 0.00986013297183,
+    "control_alpha": 0.0,
+    "Ek_label": "0.03",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek3e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti2/conti1/run"
+    ]
+  },
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.04999999999999675,
+    "AR": 16.0,
+    "invRo": 0.0059160797831,
+    "control_alpha": 0.0,
+    "Ek_label": "0.05",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek5e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek5e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek5e-2/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run"
+    ]
+  },
+  {
+    "Ra": 8000000.0,
+    "Pr": 0.7,
+    "Ek": 0.0999999999999935,
+    "AR": 16.0,
+    "invRo": 0.00295803989155,
+    "control_alpha": 0.0,
+    "Ek_label": "0.1",
+    "anchor_path": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1e-1/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65",
+    "run_paths": [
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1e-1/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1e-1/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run",
+      "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/Pr0p7/Ra8e6/Ek1e-1/AR16/Beta1p02/qbot0p5_qtop0p004978/N385x385x65/conti1/run/run"
+    ]
+  }
+]
