@@ -70,6 +70,18 @@
         open(114, file='./diagnostics/vortex/vortex_kinematics.dat', &
      &       status='unknown',access='sequential',position='append')
 
+!       Unit 115: time, horizontal pressure-gradient RMS Fp.
+        open(115, file='./data/pressure_force.out',status='unknown', &
+     &       access='sequential',position='append')
+
+!       Unit 116: strict online force-balance bulk time series.
+        open(116, file='./data/force_balance.out',status='unknown', &
+     &       access='sequential',position='append')
+
+!       Unit 117: strict force-balance profiles at every z and time.
+        open(117, file='./data/force_balance_z.out',status='unknown', &
+     &       access='sequential',position='append')
+
       ! reset the time history
       if(ireset.eq.1 .or. nread.eq.0)then
           rewind(95)
@@ -88,6 +100,9 @@
           rewind(112)
           rewind(113)
           rewind(114)
+          rewind(115)
+          rewind(116)
+          rewind(117)
       endif
 
       ENDIF
@@ -119,6 +134,9 @@
       close(112)
       close(113)
       close(114)
+      close(115)
+      close(116)
+      close(117)
       endif
      
       return      

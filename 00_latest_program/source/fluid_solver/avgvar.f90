@@ -1,7 +1,7 @@
       subroutine avgvar
 !EP   This routine calculates the avg of variables
       use param
-      use local_arrays, only: q2,q3,q1,dsal,qvap,T,kpa
+      use local_arrays, only: q2,q3,q1,dsal,qvap,T,kpa,pr
       use mgrd_arrays, only: q3lr
       use mpi_param, only: kstart,kend,kstartr,kendr
       use mpih
@@ -28,11 +28,12 @@
 !       Nuq = convfac*w*q - Sm*kappa*dq/dz
 !
 !     unit 100, data/kh_energy.out
+!       time, Fp; horizontal pressure-gradient RMS over the base volume
 !       1 time, 2-13 shell energy for kh=1..12 at z~0.5
 !       The spectrum uses horizontal velocity components q1,q2 only.
 !
       integer, parameter :: nkh = 12
-      integer :: jc,kc,kp,ic
+      integer :: jc,kc,kp,ic,im,ip,jm,jp
       integer :: kface,kl,ku
       integer :: kxi,kyi,ikh
       integer :: kmid,k075,n1mh,n2mh
@@ -45,6 +46,7 @@
 !     nuv was an unused volume convective contribution; nuh is the output flux.
 !      real    :: my_nuv,nuv
       real    :: my_nuh,nuh
+      real    :: my_fp,fp,dpdx,dpdy
       real    :: my_trms,trms
       real    :: my_vrms,vrms,vrm,Re,my_vrm_horizontal,vrm_horizontal,my_moistenergy,moistenergy,wb,mywb
       real    :: my_l0mid,l0mid,my_l075,l075
@@ -83,6 +85,7 @@
       my_l0mid = 0.0d0
       my_l075 = 0.0d0
       my_kh_energy = 0.0d0
+      my_fp = 0.0d0
       my_nut_prof = 0.0d0
       my_num_prof = 0.0d0
       my_nuq_prof = 0.0d0
@@ -98,6 +101,10 @@
         kp = kc + 1
         do jc=1,n2m
           do ic=1,n1m
+            im = imv(ic)
+            ip = ipv(ic)
+            jm = jmv(jc)
+            jp = jpv(jc)
             cellarea = (xc(ic+1)-xc(ic))*(yc(jc+1)-yc(jc))
             cellvol  = (xc(ic+1)-xc(ic))*(yc(jc+1)-yc(jc))*(zc(kc+1)-zc(kc))
 !             spdval = dsqrt(Ra/Prs) &
@@ -142,6 +149,9 @@
              vrm_horizontal =q1(ic,jc,kc)**2.0+q2(ic,jc,kc)**2.0
              moistenergy = mcell
              wb = q3(ic,jc,kc)*dsal(ic,jc,kc)
+             dpdx = (pr(ip,jc,kc)-pr(im,jc,kc))*0.5d0*dx1
+             dpdy = (pr(ic,jp,kc)-pr(ic,jm,kc))*0.5d0*dx2
+             my_fp = my_fp + (dpdx**2 + dpdy**2)*cellvol
              my_vrm_horizontal = my_vrm_horizontal + vrm_horizontal*cellvol
              my_liquidcellvol = my_liquidcellvol + cellvol
 !             my_spdavg       = my_spdavg       + spdval*cellvol
@@ -332,6 +342,7 @@
       call MPI_ALLREDUCE(my_l0mid,l0mid,1,MDP,MPI_SUM,MPI_COMM_WORLD,ierr)
       call MPI_ALLREDUCE(my_l075,l075,1,MDP,MPI_SUM,MPI_COMM_WORLD,ierr)
       call MPI_ALLREDUCE(my_kh_energy,kh_energy,nkh,MDP,MPI_SUM,MPI_COMM_WORLD,ierr)
+      call MPI_ALLREDUCE(my_fp,fp,1,MDP,MPI_SUM,MPI_COMM_WORLD,ierr)
       call MPI_ALLREDUCE(my_nut_prof,nut_prof,n3r,MDP,MPI_SUM,MPI_COMM_WORLD,ierr)
       call MPI_ALLREDUCE(my_num_prof,num_prof,n3r,MDP,MPI_SUM,MPI_COMM_WORLD,ierr)
       call MPI_ALLREDUCE(my_nuq_prof,nuq_prof,n3r,MDP,MPI_SUM,MPI_COMM_WORLD,ierr)
@@ -346,8 +357,10 @@
       Re = dsqrt(Ra/Prs)*dsqrt(vrms)
       moistenergy = moistenergy/liquidcellvol
       wb = wb/liquidcellvol
+      fp = dsqrt(dmax1(0.0d0,fp/liquidcellvol))
       if(myid.eq.0)then
         write(96,510) time, trms, Re, vrms, vrm_horizontal,moistenergy,wb,l0mid,l075,nuh
+        write(115,513) time, fp
         write(100,512) time, kh_energy(1:nkh)
         do kc=1,n3r
           if(area_prof(kc).gt.0.0d0)then
@@ -359,6 +372,7 @@
  510   format(1x,f10.4,9(1x,ES20.8))
  511   format(1x,f10.4,4(1x,ES20.8))
  512   format(1x,f10.4,12(1x,ES20.8))
+ 513   format(1x,f10.4,1(1x,ES20.8))
 
       return   
       end

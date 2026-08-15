@@ -134,6 +134,7 @@
             if( dabs(time-dble(nint(time/tpin))*tpin) .lt. dt*0.5d0 ) then
                 call vmaxv
                 call avgvar
+                call force_balance_online
                 call aggregation_scale_diagnostics
                 call mse_vortex_diagnostics
                 call nusse_walls
