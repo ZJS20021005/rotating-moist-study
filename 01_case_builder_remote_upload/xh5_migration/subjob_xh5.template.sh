@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #PBS -N __JOB_NAME__
-#PBS -q low
+#PBS -q xhacnormalc
 #PBS -l nodes=1:ppn=32
 #PBS -j oe
 
