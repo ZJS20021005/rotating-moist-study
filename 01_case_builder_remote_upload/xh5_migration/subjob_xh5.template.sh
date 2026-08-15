@@ -6,7 +6,8 @@
 
 set -euo pipefail
 
-cd "${PBS_O_WORKDIR:?PBS_O_WORKDIR is not set}"
+WORKDIR="${PBS_O_WORKDIR:-${SLURM_SUBMIT_DIR:-$PWD}}"
+cd "$WORKDIR"
 export OMP_NUM_THREADS=1
 
 # The executable was built with these Intel MPI/HDF5/FFTW installations.
