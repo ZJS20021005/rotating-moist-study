@@ -17,9 +17,10 @@ The 14-case continuation bundle is located at:
 /work/home/jiasenzhang/rotating_moist_migration_bundle_20260815
 ```
 
-This platform uses Slurm partition `xhacnormalc`. Prepare and validate jobs
-with `04_platform_scripts/submit_all.sh`; do not add `--submit` without the
-user's explicit approval.
+This platform exposes a PBS-compatible `qsub` entry point backed by Slurm.
+The continuation cases use queue `low`, one node, and 32 MPI ranks. Prepare
+and validate jobs with `04_platform_scripts/submit_all.sh`; do not add
+`--submit` without the user's explicit approval.
 
 Verified on 2026-08-05 from the current Windows workstation:
 

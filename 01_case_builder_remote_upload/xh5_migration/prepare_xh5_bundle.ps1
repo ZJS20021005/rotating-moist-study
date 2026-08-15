@@ -9,7 +9,7 @@ $caseRoot = Join-Path $BundleRoot "03_current_cases"
 $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
 
 if (-not (Test-Path -LiteralPath $templatePath)) {
-    throw "Missing Slurm template: $templatePath"
+    throw "Missing PBS template: $templatePath"
 }
 
 $template = [System.IO.File]::ReadAllText($templatePath)
@@ -57,6 +57,6 @@ foreach ($case in $cases) {
 }
 
 Copy-Item -LiteralPath $configSource -Destination $configTarget -Force
-Write-Host "Prepared xh5 Slurm subjob.sh for all 14 continuation cases."
+Write-Host "Prepared xh5 PBS/qsub subjob.sh for all 14 continuation cases."
 Write-Host "Set TMAX=500d0 and retained NREAD=1 for all cases."
 Write-Host "Installed xh5 platform_config.sh. No job was submitted."
