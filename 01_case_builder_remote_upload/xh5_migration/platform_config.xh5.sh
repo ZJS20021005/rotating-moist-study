@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Configuration for the xh5 / hpccube PBS-compatible qsub platform.
+# Configuration for the xh5 / hpccube Slurm platform.
 BUNDLE_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SOURCE_ROOT="$BUNDLE_ROOT/01_dns_program/source_merged"
 CASE_ROOT="$BUNDLE_ROOT/03_current_cases"
@@ -15,7 +15,7 @@ HDF5_ROOT="$HOME/software/hdf5-1.10.5-new/install"
 FFTW_ROOT="$HOME/software/fftw-3.3.7"
 
 RUN_COMMAND="mpirun -launcher fork -np \${SLURM_NTASKS:-64} ./simexec"
-SUBMIT_STYLE="pbs"
-SUBMIT_COMMAND="qsub"
-PBS_QUEUE="xhacnormalc"
-PBS_NP="64"
+SUBMIT_STYLE="slurm"
+SUBMIT_COMMAND="sbatch"
+SLURM_PARTITION="xhacnormalc"
+SLURM_NTASKS="64"

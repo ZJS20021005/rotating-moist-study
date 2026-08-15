@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-#PBS -N __JOB_NAME__
-#PBS -q xhacnormalc
-#PBS -l nodes=1:ppn=64
-#PBS -j oe
+#SBATCH -J __JOB_NAME__
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=64
+#SBATCH -p xhacnormalc
+#SBATCH -o %x-%j.out
+#SBATCH -e %x-%j.err
 
 set -euo pipefail
 
-WORKDIR="${PBS_O_WORKDIR:-${SLURM_SUBMIT_DIR:-$PWD}}"
+WORKDIR="${SLURM_SUBMIT_DIR:-$PWD}"
 cd "$WORKDIR"
 export OMP_NUM_THREADS=1
 

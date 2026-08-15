@@ -473,7 +473,7 @@ the fixed large-vortex comparison to
 - Fourteen cases are present: thirteen rotating Ek cases from `1e-1` through
   `1.5e-4`, plus `norotating`.
 - Every case has `NREAD=1`, `TMAX=500d0`, five validated continuation HDF5
-  files, and a PBS/qsub `subjob.sh` for queue `xhacnormalc`, one node, and 64 ranks.
+  files, and a Slurm `subjob.sh` for partition `xhacnormalc`, one node, and 64 ranks.
 - The xh5-compiled binary SHA-256 is
   `f4504bda4e9f7524664fb615f61a879a0d8eb5fa5c2d24f1abfd4b263ee8b371`.
 - The source hashes match the current local source under
