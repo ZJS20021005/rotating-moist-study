@@ -14,7 +14,7 @@ INTEL_SETVARS="$HOME/software/intel_hpckit/setvars.sh"
 HDF5_ROOT="$HOME/software/hdf5-1.10.5-new/install"
 FFTW_ROOT="$HOME/software/fftw-3.3.7"
 
-RUN_COMMAND="srun --nodes=1 --ntasks=\${SLURM_NTASKS:-64} --mpi=pmi2 ./simexec"
+RUN_COMMAND="mpirun -launcher fork -np \${SLURM_NTASKS:-64} ./simexec"
 SUBMIT_STYLE="pbs"
 SUBMIT_COMMAND="qsub"
 PBS_QUEUE="xhacnormalc"

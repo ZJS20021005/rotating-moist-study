@@ -22,9 +22,11 @@ if [[ "$intel_status" -ne 0 ]]; then
 fi
 export PATH="$HOME/software/hdf5-1.10.5-new/install/bin:$PATH"
 export LD_LIBRARY_PATH="$HOME/software/hdf5-1.10.5-new/install/lib:$HOME/software/fftw-3.3.7/lib:${LD_LIBRARY_PATH:-}"
-# Launch Intel MPI directly through Slurm PMI2. This avoids a nested Hydra
-# launcher and preserves the 64-rank decomposition used by these restarts.
-export I_MPI_PMI_LIBRARY=/opt/gridview/slurm/lib/libpmi2.so
+# xh5's srun route layer fails for a one-node hostlist.  Run Hydra locally;
+# all current continuation cases request exactly one node.
+unset I_MPI_PMI_LIBRARY || true
+unset I_MPI_FABRICS || true
+export I_MPI_HYDRA_BOOTSTRAP=fork
 
 mkdir -p fact flowmov data contstr movie diagnostics
-srun --nodes=1 --ntasks="${SLURM_NTASKS:-64}" --mpi=pmi2 ./simexec
+mpirun -launcher fork -np "${SLURM_NTASKS:-64}" ./simexec
