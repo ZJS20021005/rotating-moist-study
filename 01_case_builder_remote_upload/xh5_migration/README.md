@@ -23,7 +23,7 @@ Deployment status, verified on 2026-08-15:
 The migration uses:
 
 - the PBS-compatible `qsub` entry point with queue `xhacnormalc`;
-- one node and 32 MPI ranks per case;
+- one node and 64 MPI ranks per case;
 - 500 additional physical time units with `NREAD=1`;
 - `$HOME/software/intel_hpckit/setvars.sh`;
 - parallel HDF5 under `$HOME/software/hdf5-1.10.5-new/install`;

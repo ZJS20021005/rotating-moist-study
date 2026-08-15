@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #PBS -N __JOB_NAME__
 #PBS -q xhacnormalc
-#PBS -l nodes=1:ppn=32
+#PBS -l nodes=1:ppn=64
 #PBS -j oe
 
 set -euo pipefail
@@ -22,6 +22,9 @@ if [[ "$intel_status" -ne 0 ]]; then
 fi
 export PATH="$HOME/software/hdf5-1.10.5-new/install/bin:$PATH"
 export LD_LIBRARY_PATH="$HOME/software/hdf5-1.10.5-new/install/lib:$HOME/software/fftw-3.3.7/lib:${LD_LIBRARY_PATH:-}"
+# Launch Intel MPI directly through Slurm PMI2. This avoids a nested Hydra
+# launcher and preserves the 64-rank decomposition used by these restarts.
+export I_MPI_PMI_LIBRARY=/opt/gridview/slurm/lib/libpmi2.so
 
 mkdir -p fact flowmov data contstr movie diagnostics
-mpirun -np "${PBS_NP:-32}" ./simexec
+srun --nodes=1 --ntasks="${SLURM_NTASKS:-64}" --mpi=pmi2 ./simexec
