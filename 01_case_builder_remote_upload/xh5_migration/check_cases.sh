@@ -10,8 +10,17 @@ else
   CASE_ROOT="$BUNDLE_ROOT/03_current_cases"
 fi
 
+if [[ -n "${INTEL_SETVARS:-}" && -f "$INTEL_SETVARS" ]]; then
+  set +eu
+  source "$INTEL_SETVARS" >/dev/null 2>&1 || true
+  set -eu
+fi
 if [[ -n "${HDF5_ROOT:-}" ]]; then
   export PATH="$HDF5_ROOT/bin:$PATH"
+  export LD_LIBRARY_PATH="$HDF5_ROOT/lib:${LD_LIBRARY_PATH:-}"
+fi
+if [[ -n "${FFTW_ROOT:-}" ]]; then
+  export LD_LIBRARY_PATH="$FFTW_ROOT/lib:${LD_LIBRARY_PATH:-}"
 fi
 
 CHECK_HDF5=0

@@ -20,7 +20,9 @@ if command -v module >/dev/null 2>&1; then
   [[ -n "${HDF5_MODULE:-}" ]] && module load "$HDF5_MODULE"
 fi
 if [[ -n "${INTEL_SETVARS:-}" && -f "$INTEL_SETVARS" ]]; then
-  source "$INTEL_SETVARS" >/dev/null 2>&1
+  set +eu
+  source "$INTEL_SETVARS" >/dev/null 2>&1 || true
+  set -eu
 fi
 
 if [[ -n "${HDF5_ROOT:-}" ]]; then

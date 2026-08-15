@@ -7,6 +7,19 @@ Remote destination:
 
 `/work/home/jiasenzhang/rotating_moist_migration_bundle_20260815`
 
+Deployment status, verified on 2026-08-15:
+
+- The source in `01_dns_program/source_merged` was compiled successfully on
+  xh5 with Intel MPI 2021.6, parallel HDF5 1.10.5, and FFTW 3.3.7.
+- The deployed `simexec_new_platform` SHA-256 is
+  `f4504bda4e9f7524664fb615f61a879a0d8eb5fa5c2d24f1abfd4b263ee8b371`.
+- The binary, `NREAD=1`, `TMAX=500d0`, and the Slurm `subjob.sh` have been
+  installed and checked for all fourteen cases: `Ek1e-1`, `Ek5e-2`,
+  `Ek3e-2`, `Ek1e-2`, `Ek7e-3`, `Ek5e-3`, `Ek3e-3`, `Ek2e-3`, `Ek1e-3`,
+  `Ek7e-4`, `Ek5e-4`, `Ek2e-4`, `Ek1p5e-4`, and `norotating`.
+- This stage only uploads and verifies the continuation setup. No `sbatch`
+  command has been issued; the queue was empty at verification time.
+
 The migration uses:
 
 - Slurm partition `xhacnormalc`;

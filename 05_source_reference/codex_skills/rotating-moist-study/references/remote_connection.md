@@ -2,6 +2,25 @@
 
 ## Verified active profile
 
+Verified replacement platform on 2026-08-15:
+
+```text
+Host xh5
+HostName xh5.hpccube.com
+User jiasenzhang
+Port 65061
+```
+
+The 14-case continuation bundle is located at:
+
+```text
+/work/home/jiasenzhang/rotating_moist_migration_bundle_20260815
+```
+
+This platform uses Slurm partition `xhacnormalc`. Prepare and validate jobs
+with `04_platform_scripts/submit_all.sh`; do not add `--submit` without the
+user's explicit approval.
+
 Verified on 2026-08-05 from the current Windows workstation:
 
 ```text

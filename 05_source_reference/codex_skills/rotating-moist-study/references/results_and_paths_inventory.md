@@ -465,3 +465,18 @@ the fixed large-vortex comparison to
   75,893,248-byte continuation HDF5 files.
 - The separate raw recovery copy is
   `C:\Users\jiasenzhang\Desktop\修改程序\remote_recovery_norotating_20260808`.
+
+## xh5 continuation deployment (2026-08-15)
+
+- Remote bundle:
+  `/work/home/jiasenzhang/rotating_moist_migration_bundle_20260815`.
+- Fourteen cases are present: thirteen rotating Ek cases from `1e-1` through
+  `1.5e-4`, plus `norotating`.
+- Every case has `NREAD=1`, `TMAX=500d0`, five validated continuation HDF5
+  files, and a Slurm `subjob.sh` for one node and 64 ranks on `xhacnormalc`.
+- The xh5-compiled binary SHA-256 is
+  `f4504bda4e9f7524664fb615f61a879a0d8eb5fa5c2d24f1abfd4b263ee8b371`.
+- The source hashes match the current local source under
+  `E:\moist RB\rotating_case_inventory\00_latest_program\source`.
+- Upload and validation are complete. No continuation job was submitted as
+  part of this deployment.
