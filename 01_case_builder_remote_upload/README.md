@@ -65,6 +65,33 @@ For a nonrotating case:
 .\create_case.ps1 --ek norotating
 ```
 
+## Platform selection and continuation
+
+Interactive mode first asks for the platform:
+
+```text
+hainan       c01n0006, csub < subjob.sh
+shuguang/xh5 xh5, sbatch subjob.sh
+```
+
+The Shuguang platform uses the existing compiled executable at
+`/work/home/jiasenzhang/rotating_case/latest_program/source/simexec` and the
+template at
+`/work/home/jiasenzhang/rotating_moist_migration_bundle_20260815/03_current_cases/norotating/run`.
+
+Interactive mode then asks whether to continue the previous case.  When the
+answer is yes, it creates the next unused directory without modifying older
+outputs:
+
+```text
+N.../run/
+N.../conti1/run/
+N.../conti2/run/
+```
+
+The continuation copies the latest `continua_*` restart files, sets `NREAD=1`,
+and uses the entered continuation time as the new `TMAX`.
+
 To check the target path without writing remotely:
 
 ```powershell

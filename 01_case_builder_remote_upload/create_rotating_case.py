@@ -92,14 +92,14 @@ def inv_ro(ra: float, pr: float, ek) -> float:
     return math.sqrt(float(pr) / float(ra)) / float(ek)
 
 
-def value_row(lines: list[str], token: str) -> tuple[int, list[str]]:
+def value_row(lines, token):
     for i, line in enumerate(lines[:-1]):
         if token in line:
             return i + 1, lines[i + 1].split()
     raise RuntimeError(f"Could not find bou.in header containing {token!r}")
 
 
-def ensure_row_length(row: list[str], expected: int, defaults: list[str], token: str) -> list[str]:
+def ensure_row_length(row, expected, defaults, token):
     if len(defaults) != expected:
         raise RuntimeError(f"Internal defaults for {token!r} have wrong length")
     if len(row) == expected:
@@ -111,7 +111,7 @@ def ensure_row_length(row: list[str], expected: int, defaults: list[str], token:
     return row + defaults[len(row):]
 
 
-def set_row(lines: list[str], token: str, values: list[str]) -> None:
+def set_row(lines, token, values):
     idx, old = value_row(lines, token)
     if len(old) != len(values):
         raise RuntimeError(
@@ -559,9 +559,10 @@ PLATFORM_DEFAULTS: dict[str, dict[str, Any]] = {
     "shuguang": {
         "ssh_alias": "xh5",
         "remote_root": "/work/home/jiasenzhang/rotating_case",
-        "template_run": "/work/home/jiasenzhang/rotating_case/template/run",
+        "template_run": "/work/home/jiasenzhang/rotating_moist_migration_bundle_20260815/03_current_cases/norotating/run",
         "program_bin": "/work/home/jiasenzhang/rotating_case/latest_program/source/simexec",
         "submit_style": "sbatch",
+        "remote_python_command": "module purge >/dev/null 2>&1; module load compiler/intel/2017.5.239 >/dev/null 2>&1; module load python/3.8.10 >/dev/null 2>&1 && python -",
     },
 }
 
@@ -859,8 +860,9 @@ def attach_drizzle_tools(cfg: dict[str, Any]) -> dict[str, Any]:
 def run_remote(cfg: dict[str, Any]) -> dict[str, Any]:
     payload = json.dumps(cfg)
     bootstrap = f"PAYLOAD_JSON = {payload!r}\n" + REMOTE_SCRIPT
+    remote_command = cfg.get("remote_python_command", "python3 -")
     process = subprocess.run(
-        ["ssh", str(cfg["ssh_alias"]), "python3 -"],
+        ["ssh", str(cfg["ssh_alias"]), remote_command],
         input=bootstrap,
         text=True,
         capture_output=True,
