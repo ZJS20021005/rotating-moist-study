@@ -22,6 +22,7 @@ DRIZZLE_REFERENCE_SOLVER = (
     HERE / "linear_stability_reference" / "stability_solver.py"
 )
 CLI_OVERRIDE_KEYS = [
+    "platform",
     "ssh_alias",
     "remote_root",
     "template_run",
@@ -45,6 +46,8 @@ CLI_OVERRIDE_KEYS = [
     "tmax",
     "nread",
     "vortex_lc",
+    "continue_case",
+    "continue_time",
 ]
 
 
@@ -117,9 +120,14 @@ def set_row(lines: list[str], token: str, values: list[str]) -> None:
     lines[idx] = "     ".join(values)
 
 
-def set_job_name(text: str, job_name: str, comment: str) -> str:
-    line = f"#CSUB -J {job_name}           # {comment}"
-    updated, count = re.subn(r"(?m)^#CSUB\s+-J\s+.*$", line, text, count=1)
+def set_job_name(text: str, job_name: str, comment: str, submit_style: str) -> str:
+    if submit_style == "sbatch":
+        line = f"#SBATCH -J {job_name}           # {comment}"
+        pattern = r"(?m)^#SBATCH\s+-J\s+.*$"
+    else:
+        line = f"#CSUB -J {job_name}           # {comment}"
+        pattern = r"(?m)^#CSUB\s+-J\s+.*$"
+    updated, count = re.subn(pattern, line, text, count=1)
     if count != 1:
         raise RuntimeError("Expected exactly one #CSUB -J line in subjob.sh")
     return updated
@@ -146,6 +154,8 @@ def install_drizzle_job_check(text: str, perturb_amp: float) -> str:
 
     anchors = [
         "rm -r fact flowmov data contstr movie",
+        "mpirun -launcher fork",
+        "mpirun",
         "impi-mpirun ./simexec",
     ]
     for anchor in anchors:
@@ -172,7 +182,31 @@ def prepare_case(cfg: dict) -> dict:
     template_run = Path(cfg["template_run"])
     program_bin = Path(cfg["program_bin"]) if cfg.get("program_bin") else None
     case_dir = Path(cfg["case_dir"])
-    run_dir = case_dir / "run"
+    continue_case = bool(cfg.get("continue_case", False))
+    continuation_number = None
+    source_run = None
+    if continue_case:
+        if not case_dir.is_dir():
+            raise RuntimeError(
+                f"Cannot continue missing case directory: {case_dir}"
+            )
+        candidates = []
+        existing_numbers = []
+        for child in case_dir.iterdir():
+            match = re.fullmatch(r"conti(\d+)", child.name, flags=re.IGNORECASE)
+            if match and child.is_dir():
+                number = int(match.group(1))
+                existing_numbers.append(number)
+                if (child / "run").is_dir():
+                    candidates.append((number, child))
+        continuation_number = max(existing_numbers, default=0) + 1
+        source_case = max(candidates, default=None, key=lambda item: item[0])
+        source_run = (source_case[1] / "run") if source_case else (case_dir / "run")
+        if not source_run.is_dir():
+            raise RuntimeError(f"Cannot find restart source run: {source_run}")
+        run_dir = case_dir / f"conti{continuation_number}" / "run"
+    else:
+        run_dir = case_dir / "run"
 
     ra = float(cfg["ra"])
     pr = float(cfg["pr"])
@@ -184,6 +218,9 @@ def prepare_case(cfg: dict) -> dict:
     drizzle_perturb_amp = 1.0e-4
     expected_dsaltop = beta - 1.0
     expected_dsalbot = 0.0
+    if continue_case:
+        cfg["nread"] = 1
+        cfg["tmax"] = float(cfg.get("continue_time", cfg.get("tmax", 500.0)))
 
     dry_run = bool(cfg.get("dry_run", False))
     allow_existing = bool(cfg.get("allow_existing", False))
@@ -192,6 +229,8 @@ def prepare_case(cfg: dict) -> dict:
             "status": "dry_run",
             "case_dir": str(case_dir),
             "run_dir": str(run_dir),
+            "continue_case": continue_case,
+            "continuation_number": continuation_number,
             "job_name": cfg["job_name"],
             "computed_invRo": inv_ro(ra, pr, ek),
             "dsaltop": expected_dsaltop,
@@ -201,15 +240,19 @@ def prepare_case(cfg: dict) -> dict:
             "drizzle_perturb_amp": drizzle_perturb_amp,
             "vortex_lc": float(cfg.get("vortex_lc", 0.0)),
             "boundary_rule": "dsaltop=beta-1, dsalbot=0",
-            "submit_command": f"cd '{run_dir}' && csub < subjob.sh",
+            "submit_command": (
+                f"cd '{run_dir}' && sbatch subjob.sh"
+                if cfg.get("submit_style") == "sbatch"
+                else f"cd '{run_dir}' && csub < subjob.sh"
+            ),
         }
 
-    if not (template_run / "bou.in").is_file():
+    if not continue_case and not (template_run / "bou.in").is_file():
         raise RuntimeError(f"template_run is invalid: {template_run}")
     if program_bin is not None and not program_bin.is_file():
         raise RuntimeError(f"program_bin is missing: {program_bin}")
 
-    if case_dir.exists() and not allow_existing:
+    if not continue_case and case_dir.exists() and not allow_existing:
         raise RuntimeError(
             f"Destination already exists: {case_dir}. "
             "Use --allow-existing only if you want to refresh editable files."
@@ -219,14 +262,30 @@ def prepare_case(cfg: dict) -> dict:
     case_dir.mkdir(parents=True, exist_ok=True)
     run_dir.mkdir(parents=True, exist_ok=True)
 
-    for name in ["bou.in", "subjob.sh", "runsim.sh", "field_gridc.h5", "field_gridd.h5", "field_ms.xmf"]:
-        copy_file_if_present(template_run / name, run_dir / name, required=name in {"bou.in", "subjob.sh"})
+    input_run = source_run if continue_case else template_run
+    for name in [
+        "bou.in", "subjob.sh", "runsim.sh", "field_gridc.h5",
+        "field_gridd.h5", "field_ms.xmf", "simexec",
+        "drizzle_init.dat", "drizzle_init_meta.json",
+        "generate_drizzle_initial_condition.py",
+        "check_drizzle_before_submit.py",
+        "prepare_drizzle_initial_condition.sh", "stability_solver.py",
+    ]:
+        copy_file_if_present(
+            input_run / name,
+            run_dir / name,
+            required=name in {"bou.in", "subjob.sh"},
+        )
+    if continue_case:
+        for restart_file in source_run.glob("continua_*"):
+            if restart_file.is_file():
+                shutil.copy2(restart_file, run_dir / restart_file.name)
 
     if program_bin is not None:
         shutil.copy2(program_bin, run_dir / "simexec")
         shutil.copy2(program_bin, run_dir / program_bin.name)
     else:
-        copy_file_if_present(template_run / "simexec", run_dir / "simexec", required=True)
+        copy_file_if_present(input_run / "simexec", run_dir / "simexec", required=True)
 
     if (template_run / "postprocess").is_dir() and not (run_dir / "postprocess").exists():
         shutil.copytree(template_run / "postprocess", run_dir / "postprocess")
@@ -388,6 +447,7 @@ def prepare_case(cfg: dict) -> dict:
         subjob_path.read_text(encoding="utf-8", errors="ignore"),
         job_name,
         comment,
+        cfg.get("submit_style", "csub"),
     )
     subjob_text = install_drizzle_job_check(
         subjob_text, drizzle_perturb_amp
@@ -421,24 +481,37 @@ def prepare_case(cfg: dict) -> dict:
         "qvaptop": written_mod[6],
         "qvapbot": written_mod[7],
     }
-    info["submit_command"] = f"cd '{run_dir}' && csub < subjob.sh"
-    (case_dir / "case_info.json").write_text(json.dumps(info, indent=2), encoding="utf-8")
-    (case_dir / "submit_after_check.sh").write_text(
+    submit_command = (
+        f"cd '{run_dir}' && sbatch subjob.sh"
+        if cfg.get("submit_style") == "sbatch"
+        else f"cd '{run_dir}' && csub < subjob.sh"
+    )
+    info["submit_command"] = submit_command
+    info["continue_case"] = continue_case
+    info["continuation_number"] = continuation_number
+    info["restart_source_run"] = str(source_run) if source_run else None
+    info_path = run_dir.parent / "case_info.json" if continue_case else case_dir / "case_info.json"
+    info_path.write_text(json.dumps(info, indent=2), encoding="utf-8")
+    helper_path = run_dir.parent / "submit_after_check.sh" if continue_case else case_dir / "submit_after_check.sh"
+    submit_line = "sbatch subjob.sh\n" if cfg.get("submit_style") == "sbatch" else "csub < subjob.sh\n"
+    helper_path.write_text(
         "#!/bin/bash\n"
         "set -euo pipefail\n"
         f"cd {repr(str(run_dir))}\n"
         "python3 ./check_drizzle_before_submit.py "
         "--bou-in ./bou.in --profile ./drizzle_init.dat "
         f"--expected-perturb {drizzle_perturb_amp:.17e}\n"
-        "csub < subjob.sh\n",
+        + submit_line,
         encoding="utf-8",
     )
-    chmod_exec(case_dir / "submit_after_check.sh")
+    chmod_exec(helper_path)
 
     return {
         "status": "prepared",
         "case_dir": str(case_dir),
         "run_dir": str(run_dir),
+        "continue_case": continue_case,
+        "continuation_number": continuation_number,
         "job_name": job_name,
         "computed_invRo": inv_ro(ra, pr, ek),
         "dsaltop": dsaltop,
@@ -452,7 +525,7 @@ def prepare_case(cfg: dict) -> dict:
             f"cd '{run_dir}' && ./prepare_drizzle_initial_condition.sh"
         ),
         "boundary_row": info["boundary_row"],
-        "submit_command": f"cd '{run_dir}' && csub < subjob.sh",
+        "submit_command": submit_command,
     }
 
 
@@ -475,6 +548,38 @@ def load_interactive_defaults(config_path: Path) -> dict[str, Any]:
     return cfg
 
 
+PLATFORM_DEFAULTS: dict[str, dict[str, Any]] = {
+    "hainan": {
+        "ssh_alias": "c01n0006",
+        "remote_root": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case",
+        "template_run": "/share/org/SHUTUANL/shu_zhangjs/rainy model/ns/transition_study/beta1/lowrestest/aspect_ratio_study/Ra1e8/AR10/norotating/norotating/run",
+        "program_bin": "/share/org/SHUTUANL/shu_zhangjs/rainy model/rotating_case/latest_program/source/simexec",
+        "submit_style": "csub",
+    },
+    "shuguang": {
+        "ssh_alias": "xh5",
+        "remote_root": "/work/home/jiasenzhang/rotating_case",
+        "template_run": "/work/home/jiasenzhang/rotating_case/template/run",
+        "program_bin": "/work/home/jiasenzhang/rotating_case/latest_program/source/simexec",
+        "submit_style": "sbatch",
+    },
+}
+
+
+def apply_platform_defaults(cfg: dict[str, Any]) -> dict[str, Any]:
+    platform = str(cfg.get("platform", "hainan")).strip().lower()
+    aliases = {"hna": "hainan", "海南": "hainan", "xh5": "shuguang", "曙光": "shuguang"}
+    platform = aliases.get(platform, platform)
+    if platform not in PLATFORM_DEFAULTS:
+        raise SystemExit(
+            f"Unknown platform {platform!r}; choose hainan or shuguang."
+        )
+    cfg["platform"] = platform
+    for key, value in PLATFORM_DEFAULTS[platform].items():
+        cfg[key] = value
+    return cfg
+
+
 def save_interactive_defaults(cfg: dict[str, Any]) -> None:
     skip_keys = {
         "case_dir",
@@ -487,6 +592,8 @@ def save_interactive_defaults(cfg: dict[str, Any]) -> None:
         "boundary_row",
         "submit_command",
         "batch_index",
+        "case_dir",
+        "run_dir",
     }
     clean = {key: value for key, value in cfg.items() if key not in skip_keys}
     clean = {
@@ -519,8 +626,18 @@ def prompt_value(label: str, current: Any, *, cast=str, aliases: dict[str, Any] 
 def prompt_interactive_cfg(cfg: dict[str, Any]) -> dict[str, Any]:
     print("")
     print("Input case parameters. Press Enter to use the default in brackets.")
+    print("For platform, use hainan or shuguang/xh5.")
     print("For Ek, use norotating / NR / 0 for a nonrotating case.")
+    print("For continuation, enter y to create contiN without overwriting older runs.")
     print("")
+    selected_platform = prompt_value(
+        "platform",
+        cfg.get("platform", "hainan"),
+        cast=str,
+        aliases={"hna": "hainan", "海南": "hainan", "xh5": "shuguang", "曙光": "shuguang"},
+    )
+    cfg["platform"] = selected_platform
+    cfg = apply_platform_defaults(cfg)
     cfg["ra"] = prompt_value("Ra", cfg.get("ra"), cast=float)
     cfg["pr"] = prompt_value("Pr", cfg.get("pr"), cast=float)
     cfg["ek"] = prompt_value(
@@ -545,6 +662,17 @@ def prompt_interactive_cfg(cfg: dict[str, Any]) -> dict[str, Any]:
     cfg["n2"] = prompt_value("n2", cfg.get("n2"), cast=int)
     cfg["n3"] = prompt_value("n3", cfg.get("n3"), cast=int)
     cfg["tmax"] = prompt_value("time / TMAX", cfg.get("tmax"), cast=float)
+    cfg["continue_case"] = prompt_value(
+        "continue previous case? (y/n)",
+        cfg.get("continue_case", False),
+        cast=lambda value: value.lower() in {"y", "yes", "1", "true"},
+    )
+    if cfg["continue_case"]:
+        cfg["continue_time"] = prompt_value(
+            "continuation time",
+            cfg.get("continue_time", 500.0),
+            cast=float,
+        )
     print("")
     return cfg
 
@@ -686,6 +814,7 @@ def expanded_case_specs(spec: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def finalize_cfg(cfg: dict[str, Any]) -> dict[str, Any]:
+    cfg = apply_platform_defaults(cfg)
     validate_cfg(cfg)
     ek = normalize_ek(cfg.get("ek"))
     cfg["ek"] = None if ek is None else ek
@@ -749,6 +878,7 @@ def run_remote(cfg: dict[str, Any]) -> dict[str, Any]:
 
 def run_single(args: argparse.Namespace) -> None:
     cfg = load_json(args.config)
+    cfg = apply_platform_defaults(cfg)
     cfg = apply_cli_overrides(cfg, args)
     cfg = finalize_cfg(cfg)
     if not cfg.get("dry_run", False):
@@ -770,11 +900,14 @@ def run_interactive(args: argparse.Namespace) -> None:
     print("Local plan:")
     print(json.dumps({
         "ssh_alias": cfg["ssh_alias"],
+        "platform": cfg["platform"],
         "case_dir": cfg["case_dir"],
         "job_name": cfg["job_name"],
         "tmax": cfg["tmax"],
         "qvapbot": cfg["qvapbot"],
         "qvaptop": cfg["qvaptop"],
+        "continue_case": cfg.get("continue_case", False),
+        "continue_time": cfg.get("continue_time"),
     }, indent=2))
     run_remote(cfg)
     if not cfg.get("dry_run", False):
@@ -784,6 +917,7 @@ def run_interactive(args: argparse.Namespace) -> None:
 
 def run_batch(args: argparse.Namespace) -> None:
     base_cfg = load_json(args.config)
+    base_cfg = apply_platform_defaults(base_cfg)
     batch = load_json(args.batch)
     defaults = batch.get("defaults", {})
     case_specs = batch.get("cases", [])
@@ -796,6 +930,7 @@ def run_batch(args: argparse.Namespace) -> None:
             cfg = dict(base_cfg)
             cfg.update(defaults)
             cfg.update(expanded)
+            cfg = apply_platform_defaults(cfg)
             cfg = apply_cli_overrides(cfg, args)
             cfg = finalize_cfg(cfg)
             if not cfg.get("dry_run", False):
@@ -828,6 +963,7 @@ def main() -> None:
         help="Create a batch from a JSON file. Defaults are still read from --config.",
     )
     parser.add_argument("--ssh-alias")
+    parser.add_argument("--platform", choices=["hainan", "shuguang", "xh5"])
     parser.add_argument("--remote-root")
     parser.add_argument("--template-run")
     parser.add_argument("--program-bin")
@@ -850,6 +986,8 @@ def main() -> None:
     parser.add_argument("--tmax", "--time", dest="tmax", type=float)
     parser.add_argument("--nread", type=int)
     parser.add_argument("--vortex-lc", dest="vortex_lc", type=float)
+    parser.add_argument("--continue-case", action="store_true", default=None, dest="continue_case")
+    parser.add_argument("--continue-time", type=float, dest="continue_time")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--allow-existing", action="store_true")
     parser.add_argument(
