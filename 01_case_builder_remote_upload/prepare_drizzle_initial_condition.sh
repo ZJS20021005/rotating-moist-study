@@ -7,9 +7,17 @@ cd "$(dirname "$0")"
 # The available Python module differs between clusters.  Loading these is
 # harmless when a module is unavailable, and lets the search below find the
 # cluster's NumPy/SciPy installation.
+if ! command -v module >/dev/null 2>&1; then
+    for modules_init in /etc/profile.d/modules.sh /usr/share/Modules/init/bash; do
+        if [[ -r "$modules_init" ]]; then
+            # shellcheck disable=SC1090
+            source "$modules_init"
+            break
+        fi
+    done
+fi
 if command -v module >/dev/null 2>&1; then
     module load anaconda3/2023.09 >/dev/null 2>&1 || true
-    module load python/3.8.10 >/dev/null 2>&1 || true
 fi
 
 find_python() {
