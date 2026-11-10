@@ -1,0 +1,76 @@
+# Shuguang/xh5 build file for vortex-force-balance DNS version.
+# Use after loading compiler/intel/2017.5.239,
+# mpi/intelmpi/2017.4.239, and mathlib/fftw/3.3.8-intel-2017-double.
+# The working executable was built with the user's parallel HDF5 installation
+# below.  The platform HDF5 module provides h5fc but not h5pfc, so do not
+# silently fall back to the serial wrapper.
+HDF5_ROOT ?= /work/home/jiasenzhang/software/hdf5-1.10.5-impi2017
+H5PFC ?= $(HDF5_ROOT)/bin/h5pfc
+# Production build: keep traceback support but disable runtime bounds checking.
+FC=$(H5PFC) -r8 -traceback
+FC+=-O3 -fma -fpp -qno-openmp
+FFTW_ROOT ?= /public/software/mathlib/fftw/3.3.8/double/intel
+FC += -I$(FFTW_ROOT)/include
+
+FC+=-DPLANEMOVIE
+FC+=-DSTRUCMOVIE
+
+LINKS=-L$(FFTW_ROOT)/lib -lfftw3
+LINKS+=-L${MKLROOT}/lib/intel64_lin -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl
+
+OBJECTS_RAW=inimov_hdf_ycut.o mkmov_hdf_ycut.o inimov_hdf_xcut.o mkmov_hdf_xcut.o inimov_hdf_zcut.o mkmov_hdf_zcut.o mkmov_mean.o mkmov_field.o mkmov_dsal.o mkmov_qtens.o mkmov_qvap.o \
+            initParams.o cfl.o cflr.o coetar.o cordin.o continua.o divg.o divgck.o \
+            divgloc.o gcurv.o compute_qsat_from_b.o hdnlq1.o hdnlq2.o hdnlq3.o hdnlsa.o hdnlqvap.o \
+            indic.o inimov.o inirea.o initia.o inqpr.o invtrq1.o invtrq2.o \
+            invtrq3.o invtrsa.o invtrqvap.o matrix_transpose.o meshes.o \
+            mpi_routines.o openfi.o param.o papero.o phcalc.o phini.o \
+            prcalc.o solq1k.o solq2k.o solq3k.o solsak.o solqvap.o solxi_endwall.o solxj_endwall.o solxi_fs.o solxj_fs.o solxi_ns.o solxj_ns.o solxri.o solxrj.o \
+            solxi_periodic.o solxj_periodic.o solxri_periodic.o solxrj_periodic.o \
+            tsch.o updvp.o avgvar.o force_balance_operators.o force_balance_online.o vmaxv.o nusse_walls.o caldiffusivity.o StatRoutines.o \
+            aggregation_scale_diagnostics.o mse_vortex_diagnostics.o dynamical_vortex_diagnostics.o vortex_force_balance_online.o \
+            coetarr.o indicr.o write_field.o velbc.o \
+            mgrd_idc.o mgrd_mem.o mgrd_velitp.o mgrd_dsalc.o mgrd_qvapc.o
+
+PROGRAM=simexec
+MODULES=obj/param.o
+MODLOCS=mod/
+OBJLOCS=obj/
+OBJECTS=$(addprefix $(OBJLOCS),$(OBJECTS_RAW))
+
+$(PROGRAM):objlocs modlocs $(MODULES) $(OBJECTS)
+	$(FC) $(OBJECTS) $(LINKS) -module $(MODLOCS) -o $@
+
+obj/param.o: ./param.f90
+	$(FC) -c -o $@ -module $(MODLOCS) $<
+obj/tsch.o: ./tsch.f90
+	$(FC) -c -o $@ -module $(MODLOCS) $<
+obj/gcurv.o: ./gcurv.f90 obj/param.o obj/force_balance_operators.o
+	$(FC) -c -o $@ -module $(MODLOCS) $<
+obj/force_balance_operators.o: fluid_solver/force_balance_operators.f90 obj/param.o
+	$(FC) -c -o $@ -module $(MODLOCS) $<
+obj/force_balance_online.o: fluid_solver/force_balance_online.f90 obj/param.o obj/force_balance_operators.o
+	$(FC) -c -o $@ -module $(MODLOCS) $<
+obj/dynamical_vortex_diagnostics.o: fluid_solver/dynamical_vortex_diagnostics.f90 obj/param.o
+	$(FC) -c -o $@ -module $(MODLOCS) $<
+obj/vortex_force_balance_online.o: fluid_solver/vortex_force_balance_online.f90 obj/param.o obj/force_balance_operators.o obj/dynamical_vortex_diagnostics.o
+	$(FC) -c -o $@ -module $(MODLOCS) $<
+obj/papero.o: ./papero.f90
+	$(FC) -c -o $@ -module $(MODLOCS) $<
+obj/%.o: particle_ibm/%.f90 $(MODULES)
+	$(FC) -c -o $@ -module $(MODLOCS) $<
+obj/%.o: fluid_solver/%.f90 $(MODULES)
+	$(FC) -c -o $@ -module $(MODLOCS) $<
+obj/%.o: output/%.f90 $(MODULES)
+	$(FC) -c -o $@ -module $(MODLOCS) $<
+
+clean:
+	rm -f obj/*.o mod/*.mod $(PROGRAM)
+
+.PHONY: objlocs
+objlocs: ${OBJLOCS}
+${OBJLOCS}:
+	mkdir -p ${OBJLOCS}
+.PHONY: modlocs
+modlocs: ${MODLOCS}
+${MODLOCS}:
+	mkdir -p ${MODLOCS}

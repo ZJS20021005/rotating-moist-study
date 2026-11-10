@@ -1,0 +1,27 @@
+!---------- Grid & time scheme --------------!
+N1      N2        N3        NSST(>1=RK,else AB)
+9       9         9         3
+!---------- Simulation time & step --------------!
+NTST      TRESTART   TPIN     TFRAME    TMAX        IDTV(0=fix,1=var)
+1         10d0       0.1d0    10d0     0.001d0     0
+!---------- Restart flag --------------!
+NREAD     IRESET    PREAD
+0         1         0
+!---------- Geometry --------------!
+ALX3D     REXT1     REXT2     ISTR3       STR3       Lmax
+1d0       1d0       1d0       0           1d0        1
+!---------- Velocity boundary conditions --------------!
+UBCBOT    UBCTOP    (0=free-slip, 1=no-slip)
+1         0
+!---------- Control parameters --------------!
+Ra       Pr     invRo   alpha   gamma    Sm   alphaqs  betaqs  tau_cond
+8d6      0.7d0  0       0       1.1d0    1d0  3d0      1.1d0   0.001d0
+!---------- Spatial modulation --------------!
+A_stopmod   k_stopmod  A_sbotmod  k_sbotmod  dsaltop  dsalbot  qvaptop     qvapbot
+0           2d0        0           0           0.1d0    0        0.004978d0  0.5d0
+!---------- CFL --------------!
+DTMAX(dt var.)   RESID   CFLMAX   DT(dt fix)   CFLLIM(dt fix)
+0.001d0          5d0     1.2d0    0.001d0      5d0
+!---------- Movie details --------------!
+mov_zcut_k  tframe_me  stat_me  vortex_lc  vortex_q_z  tstat_diag  tscale_diag  tforce_diag
+5           200d0      600      0.01d0     0.7d0       2d0         3d0          4d0
