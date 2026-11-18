@@ -1,0 +1,78 @@
+{
+  "lmse": {
+    "samples": 40,
+    "peak_interval_closure": 7.136815239871641e-14,
+    "peak_interval_rhs": 2.2442305315004588e-09,
+    "peak_closure_over_peak_rhs": 3.1800722518020796e-05,
+    "two_rank_difference": {
+      "time": 0.0,
+      "sigma_m2": 3.9465393116690825e-11,
+      "P_H": 1.855506307770023e-12,
+      "P_V": 1.922581051349539e-12,
+      "P_grad": 6.707346782232201e-14,
+      "D_m": 1.8955945231240547e-12,
+      "LMSE_rhs": 3.925338533407253e-12,
+      "d_sigma_m2_dt": 3.89702826406818e-12,
+      "rhs_interval": 3.8969353761976605e-12,
+      "closure": 3.0899094298364485e-16,
+      "production_residual": 1.5201329325843738e-16
+    },
+    "peak_production_residual": 1.629874093246463e-16,
+    "peak_P_grad": 2.42694813855758e-11
+  },
+  "ke": {
+    "samples": 40,
+    "peak_interval_closure": 1.8346878666303613e-14,
+    "peak_interval_rhs": 1.5085866370493303e-10,
+    "peak_closure_over_peak_rhs": 0.0001216163408565555,
+    "two_rank_difference": {
+      "time": 0.0,
+      "K": 2.2959271005181114e-13,
+      "P_B": 1.3421524967349022e-12,
+      "epsilon": 1.513196461668095e-14,
+      "KE_rhs": 1.3572844613515775e-12,
+      "dK_dt": 1.3382291921249473e-12,
+      "rhs_interval": 1.338673205515681e-12,
+      "closure": 7.431536332980006e-16,
+      "drag_work": 0.0
+    }
+  },
+  "ke2d": {
+    "samples": 40,
+    "peak_interval_closure": 3.5826118026716524e-25,
+    "peak_interval_rhs": 3.371404351332761e-22,
+    "peak_closure_over_peak_rhs": 0.001062646727989005,
+    "two_rank_difference": {
+      "time": 0.0,
+      "K_2D": 2.179970225432668e-25,
+      "P_3Dto2D": 8.338516890860513e-25,
+      "epsilon_2D": 1.1838204840676046e-27,
+      "W_wall": 4.178452766666981e-24,
+      "KE2D_rhs": 3.343417257096862e-24,
+      "dK_2D_dt": 3.137998148453878e-24,
+      "rhs_interval": 3.1415803030110525e-24,
+      "closure": 3.582154557174603e-27,
+      "drag_work": 0.0,
+      "K_2D_legacy": 1.4686945028651668e-25,
+      "K_legacy": 3.241487295299917e-13,
+      "E2D_over_Etot_legacy": 2.492617610315055e-14
+    },
+    "legacy_movie_ratio_abs_error": 3.782493377226125e-25
+  },
+  "two_rank_baseline_checkpoint_max_abs": {
+    "q1": 0.0,
+    "q2": 0.0,
+    "q3": 0.0,
+    "dsal": 0.0,
+    "qvap": 0.0
+  },
+  "elapsed_seconds": {
+    "baseline": 1.51,
+    "new1": 0.88,
+    "new2": 1.53
+  },
+  "budget_timing": {
+    "new1": "Online budgets: 40 samples; max rank time   1.9178E-02 s",
+    "new2": "Online budgets: 40 samples; max rank time   2.7217E-02 s"
+  }
+}

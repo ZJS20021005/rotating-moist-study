@@ -1,0 +1,11 @@
+Case-specific build for beta=1.4 lm/merger study.
+TFRAME controls 2D xcut/zcut; column 2 of the Movie details row controls
+TFRAME_ME for 3D movie output (fallback: TFRAME when missing or non-positive).
+Both intervals and filenames are indexed by nint(time/interval).
+zcut includes Sal=coarse-grid buoyancy and Qv=coarse-grid vapor, plus
+Vx, Vy, Vz and Pr. Reconstruct m anomaly from Sal + gamma*Qv at fixed z.
+Full z-dependent m is Sal + gamma*Qv for this buoyancy formulation.
+TSCALE_DIAG controls aggregation scale output independently.
+
+2026-11-08 MPI fix: remove local per-rank 24h checkpoint branch; retain the
+periodic simulation-time TRESTART checkpoint and final checkpoint.
