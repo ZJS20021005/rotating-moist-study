@@ -6,9 +6,9 @@ module online_budgets
   implicit none
   private
   public :: initialize_budgets, sample_budgets, finish_budgets
-  integer :: units(3), samples = 0
+  integer :: units(4), samples = 0
   double precision :: elapsed = 0.0d0
-  real :: previous_time, previous_values(3), previous_rhs(3)
+  real :: previous_time, previous_values(4), previous_rhs(4)
   logical :: has_previous = .false.
 
 contains
@@ -24,8 +24,10 @@ contains
         call open_budget(2, 'ke', 'time,K,P_B,epsilon,KE_rhs,dK_dt,rhs_interval,closure,drag_work', status)
         call open_budget(3, 'ke2d', 'time,K_2D,P_3Dto2D,epsilon_2D,W_wall,KE2D_rhs,dK_2D_dt,' // &
           'rhs_interval,closure,drag_work,K_2D_legacy,K_legacy,E2D_over_Etot_legacy', status)
+        call open_budget(4, 'gmse', 'time,GMSE_variance,GMSE_PH,GMSE_DH,GMSE_SB,GMSE_rhs,' // &
+          'd_GMSE_variance_dt,rhs_interval,closure,closure_abs,closure_rel,GMSE_PH_ibp,GMSE_PH_residual', status)
       end if
-      if (status == 0) write(*,'(a)') 'DNS online-budgets-v1: three budgets enabled, vortex tracking disabled'
+      if (status == 0) write(*,'(a)') 'DNS online-budgets-v2: LMSE, KE, KE2D and GMSE budgets enabled; vortex tracking disabled'
     end if
     call MPI_BCAST(status, 1, MPI_INTEGER, 0, MPI_COMM_WORLD, ierr)
     if (status /= 0) call MPI_ABORT(MPI_COMM_WORLD, status, ierr)
@@ -55,12 +57,13 @@ contains
 
   subroutine sample_budgets(legacy_variance)
     real, intent(out) :: legacy_variance(4)
-    real :: mse(5), ke(4), ke2d(8), state(3), rhs(3), rate(3), interval_rhs(3), residual(3)
+    real :: mse(5), ke(4), ke2d(8), gmse(5)
+    real :: state(4), rhs(4), rate(4), interval_rhs(4), residual(4), gmse_relative
     double precision :: started
     external :: compute_lmse_budget
 
     started = MPI_WTIME()
-    call compute_lmse_budget(mse, legacy_variance(1:3))
+    call compute_lmse_budget(mse, legacy_variance(1:3), gmse)
     legacy_variance(4) = mse(1)
     call compute_kinetic_budgets(.true., .true., ke, ke2d)
     samples = samples + 1
@@ -69,14 +72,17 @@ contains
       return
     end if
 
-    state = [mse(1), ke(1), ke2d(1)]
-    rhs = [2*(mse(2)+mse(3)-mse(5)), ke(2)-ke(3)+ke(4), ke2d(2)-ke2d(3)+ke2d(4)+ke2d(5)]
+    state = [mse(1), ke(1), ke2d(1), gmse(1)]
+    rhs = [2*(mse(2)+mse(3)-mse(5)), ke(2)-ke(3)+ke(4), &
+      ke2d(2)-ke2d(3)+ke2d(4)+ke2d(5), 2*(gmse(2)-gmse(3)+gmse(4))]
     rate = ieee_value(0.0, ieee_quiet_nan)
     interval_rhs = rate
+    gmse_relative = rate(4)
     if (has_previous) then
       if (time > previous_time) then
         rate = (state-previous_values)/(time-previous_time)
         interval_rhs = 0.5*(previous_rhs+rhs)
+        gmse_relative = abs(rate(4)-interval_rhs(4))/max(abs(rate(4)), abs(interval_rhs(4)), tiny(rate(4)))
       end if
     end if
     residual = rate - interval_rhs
@@ -86,6 +92,8 @@ contains
       rate(2), interval_rhs(2), residual(2), ke(4)
     write(units(3), '(*(es25.16e3,:,","))') time, ke2d(1:4), rhs(3), &
       rate(3), interval_rhs(3), residual(3), ke2d(5:8)
+    write(units(4), '(*(es25.16e3,:,","))') time, gmse(1:4), rhs(4), &
+      rate(4), interval_rhs(4), residual(4), abs(residual(4)), gmse_relative, gmse(5), gmse(2)-gmse(5)
     previous_time = time
     previous_values = state
     previous_rhs = rhs

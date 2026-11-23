@@ -1,0 +1,69 @@
+{
+  "platform": "Hainan Intel MPI",
+  "candidate_executable_sha256": "ebcafcc199d2b41b8cacae94ccba022480314bf8aaebe0b80a35de0245f69ddf",
+  "setup": {
+    "input_grid_n1_n2_n3": [33, 33, 17],
+    "vertical_grid": "uniform",
+    "height": 1.0,
+    "horizontal_periods": [16.0, 16.0],
+    "Ra": 8000000,
+    "Pr": 0.7,
+    "invRo": 0.00986013297183,
+    "gamma": 1.1,
+    "beta": 1.4,
+    "velocity_boundary_conditions": {"bottom": "no-slip", "top": "free-slip"},
+    "checkpoint": "Identical online-budgets-v1 checkpoint after 40 steps from drizzle initialization at Sm=1.",
+    "checkpoint_time": 0.4,
+    "output_time_range": [0.41, 0.8],
+    "time_step": 0.01,
+    "statistics_interval": 0.01,
+    "samples_per_run": 40,
+    "mpi_ranks_tested": [1, 2]
+  },
+  "measurements": {
+    "Sm_1": {
+      "two_rank_peak_absolute_closure": 1.3505049986145512e-16,
+      "two_rank_peak_pointwise_relative_closure": 4.027063824457297e-6,
+      "two_rank_peak_normalized_closure": 4.027063824457297e-6,
+      "two_rank_peak_horizontal_ibp_relative_difference": 1.5181052588058677e-15,
+      "one_vs_two_rank_max_relative_difference_across_terms": 5.741331648500101e-16,
+      "one_vs_two_rank_variance_absolute_difference": 0.0,
+      "matching_offline_movie_frames": 10,
+      "peak_movie_reconstructed_variance_absolute_difference": 2.3264454728053903e-24,
+      "wall_seconds_one_rank": 0.88,
+      "wall_seconds_two_ranks": 1.54,
+      "online_budget_seconds_max_rank_two_ranks": 0.031582
+    },
+    "Sm_2": {
+      "two_rank_peak_absolute_closure": 1.1213308690599628e-15,
+      "two_rank_peak_pointwise_relative_closure": 3.6604042393815825e-5,
+      "two_rank_peak_normalized_closure": 3.4496042942384786e-5,
+      "two_rank_peak_horizontal_ibp_relative_difference": 2.0283943812615545e-15,
+      "one_vs_two_rank_max_relative_difference_across_terms": 3.949225274793823e-16,
+      "one_vs_two_rank_variance_absolute_difference": 0.0,
+      "matching_offline_movie_frames": 10,
+      "peak_movie_reconstructed_variance_absolute_difference": 1.2407709188295415e-24,
+      "wall_seconds_one_rank": 0.87,
+      "wall_seconds_two_ranks": 1.52,
+      "online_budget_seconds_max_rank_two_ranks": 0.031473
+    }
+  },
+  "v1_v2_legacy_comparison_Sm_1_two_ranks": {
+    "final_checkpoint_max_absolute_difference": {"q1": 0.0, "q2": 0.0, "q3": 0.0, "dsal": 0.0, "qvap": 0.0},
+    "byte_identical": ["avgvar.out", "lmse_budget.csv", "ke_budget.csv", "ke2d_budget.csv"],
+    "v1_wall_seconds": 1.53,
+    "v1_online_budget_seconds_max_rank": 0.02724,
+    "timing_scope": "Single small run per configuration, two MPI ranks time-sharing one allowed CPU."
+  },
+  "restart_Sm_1_two_ranks": {
+    "output_time_range": [0.81, 0.9],
+    "appended_samples": 10,
+    "all_four_budget_headers_appear_once": true,
+    "all_four_existing_budget_rows_byte_identical": true,
+    "gmse_first_continuation_interval_diagnostics_nan": true
+  },
+  "verification_commands": [
+    "python verify_gmse_smoke.py --one-rank new1 --two-rank new2 --baseline baseline_v1 --append-run append2 --offline",
+    "python verify_gmse_smoke.py --one-rank unequal1 --two-rank unequal2 --offline"
+  ]
+}
